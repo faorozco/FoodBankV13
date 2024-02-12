@@ -1,0 +1,10 @@
+.table {
+  overflow-x: auto;
+}
+
+
+.anchor{
+    position: sticky;
+    top: 0;
+}
+

@@ -8,39 +8,35 @@
       aria-describedby="inputGroup-sizing-default"
     />
   </div>
-
-
 </div>
 <div class="table px-2">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Last</th>
-          <th scope="col">Donate</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Juan Miguel</td>
-          <td>Piedrahita Monroy</td>
-          <td>
-            <span *ngIf="true" class="material-symbols-outlined">
-              handshake
-            </span>
-            <span *ngIf="false" class="material-symbols-outlined">check</span>
-          </td>
-          <td>
-            <span class="material-symbols-outlined"> edit </span>
-          </td>
-          <td>
-            <span class="material-symbols-outlined"> delete </span>
-          </td>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Open</th>
+        <th class="anchor" scope="col-4">#</th>
+        <th class="anchor" scope="col-4">Name</th>
+        <th class="anchor" scope="col-4">Lastname</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Nacionality</th>
+        <th scope="col">Donate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let beneficiary of dataTable">
+        <td>
+          <span class="material-symbols-outlined py-2"> open_in_new </span>
+        </td>
+        <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
+        <td class="anchor">{{ beneficiary.Name }}</td>
+        <td class="anchor">{{ beneficiary.LastName }}</td>
+        <td>{{ beneficiary.PhoneNumber }}</td>
+        <td>{{ beneficiary.PhoneNumber }}</td>
 
-      </tbody>
-    </table>
-  </div>
+        <td>
+          <span class="material-symbols-outlined py-2"> volunteer_activism </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -6,12 +6,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SheetConectionService {
-  url = environment.sheetUrl + '/
+  url = environment.sheetUrl
 
   constructor(public http: HttpClient) {}
 
   newBeneficiary(body: BeneficiaryModel){
     return this.http.post<BeneficiaryModel>(this.url, body)
+  }
+
+  getAllBeneficiaries(){
+   return this.http.get<any>(this.url)
   }
 
   
