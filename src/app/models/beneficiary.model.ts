@@ -18,5 +18,5 @@ export interface BeneficiaryModel {
     MaleBetween18_64: number;
     FemaleOver65: number;
     MaleOver65: number;
-
+    photo?: string;
 }
