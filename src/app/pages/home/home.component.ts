@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
 
 @Component({
@@ -7,10 +8,8 @@ import { SheetConectionService } from 'src/app/services/sheet-conection.service'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  dataTable: any = [name, 'Pepito', document, 1088008016];
-
-  
-
+  filterData = '';
+  dataTable: BeneficiaryModel[] = [];
 
 
   constructor(private sheetConection: SheetConectionService) {}
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   getAllBeneficiaries() {
     this.sheetConection.getAllBeneficiaries().subscribe({
-      next: (res) => {
+      next: (res) => {   
         this.dataTable = res;
       },
       error: (err) => {
@@ -29,4 +28,11 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+
+
+
+
+
+
 }

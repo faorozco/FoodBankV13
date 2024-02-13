@@ -11,7 +11,6 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.partForm = 1;
   }
 
   next(): void {

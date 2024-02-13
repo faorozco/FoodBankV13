@@ -1,15 +1,18 @@
 <div class="container p-3">
   <div class="input-group mb-3">
+    
     <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
     <input
+    
       type="text"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
+      name="filterData"
     />
   </div>
 </div>
-<div class="table px-2">
+<div class="table px-2" *ngIf="dataTable">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -23,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let beneficiary of dataTable">
+      <tr *ngFor="let beneficiary of dataTable" >
         <td>
           <span class="material-symbols-outlined py-2"> open_in_new </span>
         </td>
