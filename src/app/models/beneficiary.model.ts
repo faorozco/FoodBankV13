@@ -1,4 +1,5 @@
 export interface BeneficiaryModel {
+    index?: number;
     RegistrationDate: string;
     DocumentType: string;
     DocumentNumber: string;

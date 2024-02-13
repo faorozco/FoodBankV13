@@ -11,17 +11,17 @@ export class HomeComponent implements OnInit {
   filterData = '';
   dataTable: BeneficiaryModel[] = [];
 
-
   constructor(private sheetConection: SheetConectionService) {}
 
   ngOnInit(): void {
-    // this.getAllBeneficiaries();
+    this.getAllBeneficiaries();
   }
 
   getAllBeneficiaries() {
     this.sheetConection.getAllBeneficiaries().subscribe({
-      next: (res) => {   
-        this.dataTable = res;
+      next: (res) => {
+        const data = res;
+        this.generateIndex(data);
       },
       error: (err) => {
         console.log(err);
@@ -29,10 +29,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
+  generateIndex(data: any) {
+    this.dataTable = data.map((obj: any) => {
+      return {
+        ...obj,
+        index: data.indexOf(obj),
+      }
+    });
+  }
 }
