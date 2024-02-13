@@ -1,18 +1,40 @@
-<div class="container p-3">
-  <div class="input-group mb-3">
-    
-    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
-    <input
-    
-      type="text"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-      name="filterData"
-    />
+<h2 class="text-center my-2">Wolcome to Food Bank Registration!</h2>
+<p class="text-center my-2">Search by name or document number...</p>
+
+<form class="container p-3" [formGroup]="form">
+  <div class="row">
+    <div class="input-group mb-3">
+      <input
+        placeholder="Search by name or document number..."
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        formControlName="search"
+        (keyup)="newSearch()"
+      />
+    </div>
   </div>
-</div>
-<div class="table px-2" *ngIf="dataTable">
+
+  <div class="row">
+    <div class="container-fluid d-flex justify-content-center">
+      <div class="m-2">
+        <button
+          class=""
+          type="button"
+          class="btn btn-warning"
+          (click)="searchBtn()"
+          *ngIf="form.value.search !== ''"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- ********* tabla ************* -->
+<div class="table px-2" *ngIf="dataTable.length > 0">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -26,7 +48,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let beneficiary of dataTable" >
+      <tr *ngFor="let beneficiary of dataTable">
         <td>
           <span class="material-symbols-outlined py-2"> open_in_new </span>
         </td>
@@ -37,7 +59,9 @@
         <td>{{ beneficiary.PhoneNumber }}</td>
 
         <td>
-          <span class="material-symbols-outlined py-2"> volunteer_activism </span>
+          <span class="material-symbols-outlined py-2">
+            volunteer_activism
+          </span>
         </td>
       </tr>
     </tbody>
