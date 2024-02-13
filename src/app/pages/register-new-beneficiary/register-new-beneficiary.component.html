@@ -1,0 +1,161 @@
+<div class="container-fluid p-4">
+  <h3 class="text-center pb-2">New Beneficiary</h3>
+  <form action="">
+
+    <div *ngIf="partForm == 1">
+
+        <!-- Tipo de documento y numero -->
+
+    <div class="row">
+        <div class="input-group py-2">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >Document</label
+          >
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="Refugee Claimant">Refugee Claimant</option>
+            <option value="Foreign document">Foreign document</option>
+            <option value="Ontario Health Number Card">
+              Ontario Health Number Card
+            </option>
+            <option value="Passport">Passport</option>
+            <option value="Driving license">Driving license</option>
+            <option value="Other">Other</option>
+          </select>
+          <input
+            type="text"
+            aria-label="Last name"
+            class="form-control"
+            placeholder="Document number"
+          />
+        </div>
+      </div>
+  
+      <!-- Nombre -->
+  
+      <div class="row">
+        <div class="input-group py-2">
+          <span class="input-group-text">Name</span>
+          <input
+            type="text"
+            aria-label="First name"
+            placeholder="Name"
+            class="form-control"
+          />
+          <input
+            type="text"
+            aria-label="Last name"
+            placeholder="Last"
+            class="form-control"
+          />
+        </div>
+      </div>
+  
+      <!-- Cumpleaños y sexo -->
+  
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 py-2">
+          <div class="input-group">
+            <span class="input-group-text">Birth of date</span>
+            <input type="date" aria-label="birthdate" class="form-control" />
+          </div>
+        </div>
+  
+        <div class="col-xs-12 col-sm-6 py-2">
+          <div class="input-group">
+            <label class="input-group-text" for="inputGroupSelect01">Sex</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Ciudad y dirección -->
+  
+      <div class="row">
+        <div class="input-group py-2">
+          <label class="input-group-text" for="inputGroupSelect01">City</label>
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="Brampton">Brampton</option>
+            <option value="Markham">Markham</option>
+            <option value="Mississauga">Mississauga</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Vaughan">Vaughan</option>
+            <option value="Other">Other</option>
+          </select>
+          <input
+            type="text"
+            aria-label="Last name"
+            class="form-control"
+            placeholder="adress"
+          />
+        </div>
+      </div>
+  
+      <!-- Pais de origen -->
+  
+      <div class="row">
+        <div class="input-group py-2">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >Nacionality</label
+          >
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Canadá">Canadá</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="México">México</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+    <div *ngIf="partForm == 2" >
+
+        
+
+    </div>
+    
+
+    <!-- ********* next ************ -->
+
+    <div *ngIf="partForm == 1" class="d-flex justify-content-center">
+      <button (click)="next()" type="button" class="btn btn-warning px-2">Next</button>
+    </div>
+    <!-- ********* next ************ -->
+
+    <div *ngIf="partForm == 2" class="d-flex justify-content-center">
+      <button (click)="back()" type="button" class="btn btn-light mx-2">Back</button>
+      <button (click)="submit()" type="submit" class="btn btn-success mx-2">Submit</button>
+    </div>
+
+
+
+    <!-- PERSONAS QUE VIVEN CON EL BENEFICIARIO -->
+
+
+    
+
+
+
+
+
+
+
+
+
+  </form>
+</div>

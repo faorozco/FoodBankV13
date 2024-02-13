@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private sheetConection: SheetConectionService) {}
 
   ngOnInit(): void {
-    this.getAllBeneficiaries();
+    // this.getAllBeneficiaries();
   }
 
   getAllBeneficiaries() {
