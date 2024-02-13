@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterNewBeneficiaryComponent } from './pages/register-new-beneficiary/register-new-beneficiary.component';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +17,6 @@ import { FilterPipe } from './pipes/filter.pipe';
     HomeComponent,
     HeaderComponent,
     RegisterNewBeneficiaryComponent,
-    FilterPipe
   ],
   imports: [
     BrowserModule,
