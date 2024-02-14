@@ -7,11 +7,15 @@ import { environment } from 'src/environments/environment';
 })
 export class SheetConectionService {
   url = environment.sheetUrl;
+  urlEntregados = environment.sheetUrlEntregados;
 
   constructor(public http: HttpClient) {}
 
   newBeneficiary(body: BeneficiaryModel) {
     return this.http.post<BeneficiaryModel>(this.url, body);
+  }
+  delivery(body: BeneficiaryModel) {
+    return this.http.post<BeneficiaryModel>(this.urlEntregados, body);
   }
 
   getAllBeneficiaries() {

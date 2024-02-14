@@ -23,4 +23,5 @@ export interface BeneficiaryModel {
     nameUpperCase?: string;
     LastUpperCase?: string;
     DeliveryDate?: string;
+    check?: boolean;
 }

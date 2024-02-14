@@ -1,6 +1,18 @@
-<app-alert [alertText]="alertText" [alertType]="alertType" ></app-alert>
+<app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
+<app-modal
+  [modalTitle]="modalTitle"
+  [bodyText]="bodyText"
+  [btnCloseText]="btnCloseTextModal"
+  [btnSaveText]="btnSaveTextModal"
+  [hideSave]="hideSaveModal"
+  [hideCancel]="hideCancelModal"
+  (SaveChangesEvent)="saveChangesModal()"
+>
+<ng-content></ng-content>
 
-<h2 class="text-center mt-2">Wolcome to Food Bank Registration!</h2>
+</app-modal>
+
+<h2 class="text-center mt-2">Welcome to Food Bank Registration!</h2>
 <!-- <p class="text-center my-2">Search by name or document number...</p> -->
 
 <div class="row">
@@ -13,7 +25,7 @@
         (click)="getAllBeneficiaries()"
         *ngIf="dataTable.length === 0"
       >
-        All beneficiary
+        List of Beneficiaries
       </button>
     </div>
     <div class="m-2">
@@ -24,12 +36,10 @@
         routerLink="./new-beneficiary"
         (click)="getAllBeneficiaries()"
       >
-      {{ new }}
+        {{ new }}
       </button>
     </div>
   </div>
-
-
 </div>
 
 <!-- ********* formulario ************* -->
@@ -38,7 +48,7 @@
   <div class="row" *ngIf="temporalData.length !== 0">
     <div class="input-group mb-3">
       <input
-      #text
+        #text
         placeholder="Search by name or document number..."
         type="text"
         class="form-control"
@@ -69,7 +79,9 @@
     <tbody>
       <tr *ngFor="let beneficiary of dataTable">
         <td>
-          <span class="material-symbols-outlined cursor py-2"> open_in_new </span>
+          <span class="material-symbols-outlined cursor py-2">
+            open_in_new
+          </span>
         </td>
         <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
         <td class="anchor">{{ beneficiary.Name }}</td>
@@ -78,12 +90,26 @@
         <td>{{ beneficiary.PhoneNumber }}</td>
 
         <td>
-          <span class="material-symbols-outlined cursor py-2">
+          <span
+            class="material-symbols-outlined cursor py-2"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+           
+            *ngIf="!beneficiary.check"
+          >
             volunteer_activism
+          </span>
+          <span class="material-symbols-outlined" *ngIf="beneficiary.check">
+            done
           </span>
         </td>
         <td>
-          <span class="material-symbols-outlined cursor py-2" (click)="deleteBeneficiary(beneficiary)">
+          <span
+            class="material-symbols-outlined cursor py-2"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="deleteBeneficiaryModal(beneficiary)"
+          >
             Delete
           </span>
         </td>

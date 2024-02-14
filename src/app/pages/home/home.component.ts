@@ -14,9 +14,16 @@ export class HomeComponent implements OnInit {
   temporalData: BeneficiaryModel[] = [];
   form!: FormGroup;
   new = 'New beneficiary';
-  alertText = ''
+  alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
-
+  check = false;
+  modalTitle: string = 'Modal Title';
+  bodyText: string = 'Aqui se coloca el texto';
+  btnSaveTextModal: string = 'Save';
+  btnCloseTextModal: string = 'Close';
+  beneficiary!: any;
+  hideSaveModal: boolean = false;
+  hideCancelModal: boolean = false;
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -24,8 +31,36 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+ 
+
+  deleteBeneficiaryModal(data: any) {
+    this.beneficiary = data;
+    this.modalTitle = 'Delete Beneficiary';
+    this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
+    this.btnSaveTextModal = 'Delete';
+    this.btnCloseTextModal = 'Cancel';
+    this.hideSaveModal = false;
+  }
+
+  saveChangesModal(): void {
+    this.deleteBeneficiary(this.beneficiary);
+  }
+
+  delivery(donate: BeneficiaryModel) {
+    donate.DeliveryDate = this.dateNow();
+    this.sheetConection.delivery(donate).subscribe({
+      next: (res) => {
+        console.log('res');
+      },
+    });
+
+    donate.check = true;
+  }
+
+  dateNow() {
+    return this.sheetConection.getCurrentDateTime();
   }
 
   inputText(text: any) {
@@ -41,6 +76,7 @@ export class HomeComponent implements OnInit {
             index: res.indexOf(obj),
             nameUpperCase: obj.Name.toUpperCase(),
             LastUpperCase: obj.LastName.toUpperCase(),
+            check: false,
           };
         });
         this.dataTable = this.temporalData;
@@ -62,25 +98,26 @@ export class HomeComponent implements OnInit {
   }
 
   deleteBeneficiary(beneficiary: any) {
-    console.log(beneficiary.index);
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
       next: (res) => {
-        this.alertText = 'The beneficiary was successfully removed'
-        this.alertType = 'success'
+        this.alertText = 'The beneficiary was successfully removed';
+        this.alertType = 'success';
+        this.hideSaveModal = true;
+        this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
+
         this.getAllBeneficiaries();
         setTimeout(() => {
-          this.alertText = ''
-          this.alertType = 'none'
+          this.alertText = '';
+          this.alertType = 'none';
         }, 5000);
-
-        
       },
       error: (err) => {
-        this.alertText = 'Try again later'
-        this.alertType = 'danger'
+        this.alertText = 'Try again later';
+        this.bodyText = 'Try again later';
+        this.alertType = 'danger';
         setTimeout(() => {
-          this.alertText = ''
-          this.alertType = 'none'
+          this.alertText = '';
+          this.alertType = 'none';
         }, 5000);
       },
     });

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  sheetUrlEntregados: 'https://sheet.best/api/sheets/a0cb4b83-bcaa-4094-81f1-45a53cebf949',
   sheetUrl:
     'https://sheet.best/api/sheets/6e67b075-8024-4ffa-8668-6d9b7a3459a3',
   API_KEY: 'AIzaSyAoB35cZu7ej6ADoSSFQ1R3jYkZsPLUrEQ',
