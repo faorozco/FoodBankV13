@@ -22,8 +22,6 @@ export class HomeComponent implements OnInit {
   btnSaveTextModal: string = 'Save';
   btnCloseTextModal: string = 'Close';
   beneficiary!: any;
-  hideSaveModal: boolean = false;
-  hideCancelModal: boolean = false;
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -33,7 +31,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
- 
+  deliveryBeneficiaryModal(data: any){
+    this.beneficiary = data;
+    this.modalTitle = 'Delivery Beneficiary';
+    this.bodyText = `Are you sure you want to deliver the beneficiary: ${data.Name} ${data.LastName}?`;
+    this.btnSaveTextModal = 'Deliver';
+    this.btnCloseTextModal = 'Cancel';
+  }
 
   deleteBeneficiaryModal(data: any) {
     this.beneficiary = data;
@@ -41,22 +45,32 @@ export class HomeComponent implements OnInit {
     this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
     this.btnSaveTextModal = 'Delete';
     this.btnCloseTextModal = 'Cancel';
-    this.hideSaveModal = false;
   }
 
   saveChangesModal(): void {
-    this.deleteBeneficiary(this.beneficiary);
+    if (this.btnSaveTextModal == 'Delete') {
+      this.deleteBeneficiary(this.beneficiary);
+    }
+    else if (this.btnSaveTextModal == 'Deliver') {
+      this.delivery(this.beneficiary);
+    }
   }
 
   delivery(donate: BeneficiaryModel) {
     donate.DeliveryDate = this.dateNow();
     this.sheetConection.delivery(donate).subscribe({
       next: (res) => {
-        console.log('res');
+        donate.check = true;
+        this.alertText = 'The beneficiary was successfully delivered';
+        this.alertType = 'success';
+        this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
+        setTimeout(() => {
+          this.alertText = '';
+          this.alertType = 'none';
+        }, 5000);
       },
     });
 
-    donate.check = true;
   }
 
   dateNow() {
@@ -101,8 +115,7 @@ export class HomeComponent implements OnInit {
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
       next: (res) => {
         this.alertText = 'The beneficiary was successfully removed';
-        this.alertType = 'success';
-        this.hideSaveModal = true;
+        this.alertType = 'warning';
         this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
 
         this.getAllBeneficiaries();

@@ -15,8 +15,8 @@
           {{bodyText}}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  *ngIf="!hideCancel">{{btnCloseText}}</button>
-          <button type="button" class="btn btn-danger" (click)="saveChanges()" *ngIf="!hideSave">{{btnSaveText}}</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{btnCloseText}}</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveChanges()">{{btnSaveText}}</button>
         </div>
       </div>
     </div>

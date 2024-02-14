@@ -4,8 +4,6 @@
   [bodyText]="bodyText"
   [btnCloseText]="btnCloseTextModal"
   [btnSaveText]="btnSaveTextModal"
-  [hideSave]="hideSaveModal"
-  [hideCancel]="hideCancelModal"
   (SaveChangesEvent)="saveChangesModal()"
 >
 <ng-content></ng-content>
@@ -94,8 +92,8 @@
             class="material-symbols-outlined cursor py-2"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
-           
             *ngIf="!beneficiary.check"
+            (click)="deliveryBeneficiaryModal(beneficiary)"
           >
             volunteer_activism
           </span>

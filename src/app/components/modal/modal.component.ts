@@ -23,7 +23,6 @@ export class ModalComponent implements OnInit {
 
   saveChanges(){
     this.SaveChangesEvent.emit();
-    
   }
 
 
