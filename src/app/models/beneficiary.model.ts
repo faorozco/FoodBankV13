@@ -22,4 +22,5 @@ export interface BeneficiaryModel {
     photo?: string;
     nameUpperCase?: string;
     LastUpperCase?: string;
+    DeliveryDate?: string;
 }
