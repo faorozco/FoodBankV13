@@ -1,40 +1,43 @@
 <h2 class="text-center my-2">Wolcome to Food Bank Registration!</h2>
 <p class="text-center my-2">Search by name or document number...</p>
 
+<div class="row">
+  <div class="container-fluid d-flex justify-content-center">
+    <div class="m-2">
+      <button
+        class=""
+        type="button"
+        class="btn btn-success"
+        (click)="getAllBeneficiaries()"
+        *ngIf="dataTable.length === 0"
+      >
+        All beneficiary
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ********* formulario ************* -->
+
 <form class="container p-3" [formGroup]="form">
-  <div class="row">
+  <div class="row" *ngIf="temporalData.length !== 0">
     <div class="input-group mb-3">
       <input
+      #text
         placeholder="Search by name or document number..."
         type="text"
         class="form-control"
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         formControlName="search"
-        (keyup)="newSearch()"
+        (keyup)="inputText(text.value)"
       />
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="container-fluid d-flex justify-content-center">
-      <div class="m-2">
-        <button
-          class=""
-          type="button"
-          class="btn btn-warning"
-          (click)="searchBtn()"
-          *ngIf="form.value.search !== ''"
-        >
-          Search
-        </button>
-      </div>
     </div>
   </div>
 </form>
 
 <!-- ********* tabla ************* -->
-<div class="table px-2" *ngIf="dataTable.length > 0">
+<div class="table px-2" *ngIf="temporalData.length > 0">
   <table class="table table-striped">
     <thead>
       <tr>

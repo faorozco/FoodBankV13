@@ -21,29 +21,31 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.getAllBeneficiaries();
     }
   
 
 
 
-  newSearch(){
-    if (this.form.value.search === '' ) {
-      this.dataTable = this.temporalData;
-    }
+    inputText(text: any){
+      this.dataTable = this.filterArray(this.temporalData, text)
+
   }
 
-  searchBtn() {
-    this.dataTable = this.filterArray(this.dataTable, this.form.value.search);
-  }
 
  
 
   getAllBeneficiaries() {
     this.sheetConection.getAllBeneficiaries().subscribe({
       next: (res) => {
-        this.temporalData = res;
-        this.generateIndex(this.temporalData);
+        this.temporalData = res.map((obj: BeneficiaryModel) => {
+          return {
+            ...obj,
+            index: res.indexOf(obj),
+            nameUpperCase: obj.Name.toUpperCase(),
+            LastUpperCase: obj.LastName.toUpperCase(),
+          };
+        });;
+        this.dataTable = this.temporalData
       },
       error: (err) => {
         console.log(err);
@@ -51,26 +53,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  generateIndex(data: any) {
-    this.dataTable = data.map((obj: any) => {
-      return {
-        ...obj,
-        index: data.indexOf(obj),
-      };
-    });
-    this.temporalData = this.dataTable;
-  }
 
   filterArray(value: any[], search: string) {
-    const newValue = value.map((obj) => {
-      return {
-        ...obj,
-        nameUpperCase: obj.Name.toUpperCase(),
-        LastUpperCase: obj.LastName.toUpperCase(),
-      };
-    });
-
-    return newValue.filter((arr) => {
+    return value.filter((arr) => {
       return (
         arr.nameUpperCase.includes(search.toUpperCase()) ||
         arr.LastUpperCase.includes(search.toUpperCase()) ||

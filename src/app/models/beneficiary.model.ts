@@ -20,4 +20,6 @@ export interface BeneficiaryModel {
     FemaleOver65: number;
     MaleOver65: number;
     photo?: string;
+    nameUpperCase?: string;
+    LastUpperCase?: string;
 }
