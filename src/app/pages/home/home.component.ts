@@ -63,4 +63,17 @@ export class HomeComponent implements OnInit {
       );
     });
   }
+
+
+
+  deleteBeneficiary(beneficiary: any) {
+    console.log(beneficiary.index)
+    return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
+      next: (res) => {
+        console.log('Elemento eliminado');
+        console.log(res);
+        this.getAllBeneficiaries();
+      } 
+    })
+  }
 }

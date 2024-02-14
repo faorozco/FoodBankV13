@@ -17,4 +17,8 @@ export class SheetConectionService {
   getAllBeneficiaries() {
     return this.http.get<any>(this.url);
   }
+
+  deleteBeneficiary(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
