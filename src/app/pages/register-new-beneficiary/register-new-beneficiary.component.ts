@@ -23,7 +23,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       City: new FormControl('', Validators.required),
       Address: new FormControl('', Validators.required),
       PhoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern(/^\d+$/)]),
-      Nacionality: new FormControl('', Validators.required),
+      Nationality: new FormControl('', Validators.required),
       FemaleBetween0_4: new FormControl('', Validators.required),
       MaleBetween0_4: new FormControl('', Validators.required),
       FemaleBetween5_17: new FormControl('', Validators.required),

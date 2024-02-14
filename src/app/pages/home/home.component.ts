@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   dataTable: BeneficiaryModel[] = [];
   temporalData: BeneficiaryModel[] = [];
   form!: FormGroup;
+  new = 'New beneficiary'
+
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -67,13 +69,17 @@ export class HomeComponent implements OnInit {
 
 
   deleteBeneficiary(beneficiary: any) {
+
     console.log(beneficiary.index)
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
       next: (res) => {
         console.log('Elemento eliminado');
         console.log(res);
         this.getAllBeneficiaries();
-      } 
+      }, 
+      error: (err) => {
+        alert('Intentelo más tarde');
+      }
     })
   }
 }

@@ -1,4 +1,4 @@
-<h2 class="text-center my-2">Wolcome to Food Bank Registration!</h2>
+<h2 class="text-center mt-2">Wolcome to Food Bank Registration!</h2>
 <p class="text-center my-2">Search by name or document number...</p>
 
 <div class="row">
@@ -14,7 +14,20 @@
         All beneficiary
       </button>
     </div>
+    <div class="m-2">
+      <button
+        class=""
+        type="button"
+        class="btn btn-warning"
+        routerLink="./new-beneficiary"
+        (click)="getAllBeneficiaries()"
+      >
+      {{ new }}
+      </button>
+    </div>
   </div>
+
+
 </div>
 
 <!-- ********* formulario ************* -->
