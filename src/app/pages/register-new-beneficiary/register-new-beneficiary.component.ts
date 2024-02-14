@@ -22,9 +22,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
       DocumentType: new FormControl('', Validators.required),
-      DocumentNumber: new FormControl('', [
-        Validators.required,
-      ]),
+      DocumentNumber: new FormControl('', [Validators.required]),
       Name: new FormControl('', Validators.required),
       LastName: new FormControl('', Validators.required),
       BirthDate: new FormControl('', Validators.required),
@@ -49,11 +47,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-    const date = this.sheetConection.getCurrentDateTime();
-    console.log(typeof date, date )
-  }
+  ngOnInit(): void {}
 
   next(): void {
     this.partForm = 2;
@@ -66,7 +60,9 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   onSubmit(): void {
     const body = {
       ...this.formSheet.value,
-      RegistrationDate: this.sheetConection.getCurrentDateTime().toLocaleString(),
+      RegistrationDate: this.sheetConection
+        .getCurrentDateTime()
+        .toLocaleString(),
     };
     if (this.formSheet.valid) {
       this.sheetConection.newBeneficiary(body).subscribe({
