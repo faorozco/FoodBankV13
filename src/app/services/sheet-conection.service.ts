@@ -21,4 +21,10 @@ export class SheetConectionService {
   deleteBeneficiary(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  getCurrentDateTime(): string {
+    const currentDate = new Date();
+    const dateTimeString = currentDate.toLocaleString();
+    return dateTimeString;
+  }
 }

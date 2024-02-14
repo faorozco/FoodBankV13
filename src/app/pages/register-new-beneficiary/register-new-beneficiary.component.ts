@@ -24,7 +24,6 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       DocumentType: new FormControl('', Validators.required),
       DocumentNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\d+$/),
       ]),
       Name: new FormControl('', Validators.required),
       LastName: new FormControl('', Validators.required),
@@ -34,7 +33,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       Address: new FormControl('', Validators.required),
       PhoneNumber: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
+        // Validators.minLength(10),
         Validators.pattern(/^\d+$/),
       ]),
       Nationality: new FormControl('', Validators.required),
@@ -50,7 +49,11 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    const date = this.sheetConection.getCurrentDateTime();
+    console.log(typeof date, date )
+  }
 
   next(): void {
     this.partForm = 2;
@@ -61,8 +64,12 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const body = {
+      ...this.formSheet.value,
+      RegistrationDate: this.sheetConection.getCurrentDateTime().toLocaleString(),
+    };
     if (this.formSheet.valid) {
-      this.sheetConection.newBeneficiary(this.formSheet.value).subscribe({
+      this.sheetConection.newBeneficiary(body).subscribe({
         next: (res) => {
           this.alertText = 'the beneficiary has been created correctly';
           this.alertType = 'success';

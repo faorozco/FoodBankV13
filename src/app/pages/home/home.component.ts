@@ -17,13 +17,16 @@ export class HomeComponent implements OnInit {
   alertText = ''
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
 
+
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
       search: new FormControl('', Validators.required),
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   inputText(text: any) {
     this.dataTable = this.filterArray(this.temporalData, text);
@@ -82,4 +85,10 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+  // getCurrentDateTime(): string {
+  //   const currentDate = new Date();
+  //   const dateTimeString = currentDate.toLocaleString();
+  //   return dateTimeString;
+  // }
 }
