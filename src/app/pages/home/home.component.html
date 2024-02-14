@@ -48,12 +48,13 @@
         <th scope="col">Phone Number</th>
         <th scope="col">Nacionality</th>
         <th scope="col">Donate</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let beneficiary of dataTable">
         <td>
-          <span class="material-symbols-outlined py-2"> open_in_new </span>
+          <span class="material-symbols-outlined cursor py-2"> open_in_new </span>
         </td>
         <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
         <td class="anchor">{{ beneficiary.Name }}</td>
@@ -62,8 +63,13 @@
         <td>{{ beneficiary.PhoneNumber }}</td>
 
         <td>
-          <span class="material-symbols-outlined py-2">
+          <span class="material-symbols-outlined cursor py-2">
             volunteer_activism
+          </span>
+        </td>
+        <td>
+          <span class="material-symbols-outlined cursor py-2">
+            Delete
           </span>
         </td>
       </tr>
