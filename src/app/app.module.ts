@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterNewBeneficiaryComponent } from './pages/register-new-beneficiary/register-new-beneficiary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     RegisterNewBeneficiaryComponent,
+    ModalComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

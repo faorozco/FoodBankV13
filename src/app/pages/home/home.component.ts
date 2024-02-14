@@ -13,8 +13,9 @@ export class HomeComponent implements OnInit {
   dataTable: BeneficiaryModel[] = [];
   temporalData: BeneficiaryModel[] = [];
   form!: FormGroup;
-  new = 'New beneficiary'
-
+  new = 'New beneficiary';
+  alertText = ''
+  alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -22,19 +23,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    }
-  
+  ngOnInit(): void {}
 
-
-
-    inputText(text: any){
-      this.dataTable = this.filterArray(this.temporalData, text)
-
+  inputText(text: any) {
+    this.dataTable = this.filterArray(this.temporalData, text);
   }
-
-
- 
 
   getAllBeneficiaries() {
     this.sheetConection.getAllBeneficiaries().subscribe({
@@ -46,15 +39,14 @@ export class HomeComponent implements OnInit {
             nameUpperCase: obj.Name.toUpperCase(),
             LastUpperCase: obj.LastName.toUpperCase(),
           };
-        });;
-        this.dataTable = this.temporalData
+        });
+        this.dataTable = this.temporalData;
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
-
 
   filterArray(value: any[], search: string) {
     return value.filter((arr) => {
@@ -66,20 +58,28 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-
   deleteBeneficiary(beneficiary: any) {
-
-    console.log(beneficiary.index)
+    console.log(beneficiary.index);
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
       next: (res) => {
-        console.log('Elemento eliminado');
-        console.log(res);
+        this.alertText = 'It was successfully removed'
+        this.alertType = 'success'
         this.getAllBeneficiaries();
-      }, 
+        setTimeout(() => {
+          this.alertText = ''
+          this.alertType = 'none'
+        }, 5000);
+
+        
+      },
       error: (err) => {
-        alert('Intentelo más tarde');
-      }
-    })
+        this.alertText = 'Try again later'
+        this.alertType = 'danger'
+        setTimeout(() => {
+          this.alertText = ''
+          this.alertType = 'none'
+        }, 5000);
+      },
+    });
   }
 }

@@ -1,0 +1,24 @@
+<div
+  class="container-fluid d-flex justify-content-center"
+  *ngIf="alertType == 'success'"
+>
+  <div class="alert alert-success" role="alert">{{alertText}}</div>
+</div>
+
+<div
+  class="container-fluid d-flex justify-content-center"
+  *ngIf="alertType == 'danger'"
+>
+  <div class="alert alert-danger" role="alert">
+    {{ alertText }}
+  </div>
+</div>
+
+<div
+  class="container-fluid d-flex justify-content-center"
+  *ngIf="alertType == 'warning'"
+>
+  <div class="alert alert-warning" role="alert">
+    {{ alertText }}
+  </div>
+</div>

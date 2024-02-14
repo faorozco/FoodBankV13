@@ -1,3 +1,5 @@
+<app-alert [alertText]="alertText" [alertType]="alertType" ></app-alert>
+
 <div class="container-fluid p-4">
   <h3 class="text-center pb-2">New Beneficiary</h3>
   <form [formGroup]="formSheet" (onSubmit)="onSubmit()">
@@ -102,9 +104,9 @@
         <div class="col-xs-12 col-sm-6 py-2">
           <div class="input-group">
             <label class="input-group-text" for="inputGroupSelect01"
-              >Nacionality</label
+              >Nationality</label
             >
-            <select class="form-select" id="inputGroupSelect01" formControlName="Nacionality">
+            <select class="form-select" id="inputGroupSelect01" formControlName="Nationality">
 
               <option value="Ecuador">Ecuador</option>
               <option value="Canadá">Canadá</option>
@@ -325,7 +327,7 @@
       <button (click)="back()" type="button" class="btn btn-light mx-2">
         Back
       </button>
-      <button (click)="onSubmit()" type="submit" class="btn btn-success mx-2">
+      <button (click)="onSubmit()" type="submit" class="btn btn-success mx-2" *ngIf="activeSubmit">
         Submit
       </button>
     </div>
