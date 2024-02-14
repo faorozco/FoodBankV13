@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
     console.log(beneficiary.index);
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({
       next: (res) => {
-        this.alertText = 'It was successfully removed'
+        this.alertText = 'The beneficiary was successfully removed'
         this.alertType = 'success'
         this.getAllBeneficiaries();
         setTimeout(() => {
@@ -85,10 +85,4 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
-  // getCurrentDateTime(): string {
-  //   const currentDate = new Date();
-  //   const dateTimeString = currentDate.toLocaleString();
-  //   return dateTimeString;
-  // }
 }
