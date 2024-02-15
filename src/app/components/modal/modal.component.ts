@@ -10,9 +10,10 @@ export class ModalComponent implements OnInit {
 @Input() bodyText: string = 'Body Text';
 @Input() btnSaveText: string = 'Save changes';
 @Input() btnCloseText: string = 'Close';
-@Input() hideSave: boolean = false;
-@Input() hideCancel: boolean = false;
+@Input() deleteBtnModal: boolean = false;
+@Input() saveBtnModal: boolean = false;
 @Output() SaveChangesEvent: EventEmitter<any> = new EventEmitter();
+@Output() DeleteChangesEvent: EventEmitter<any> = new EventEmitter();
 
 
   constructor() { }
@@ -23,6 +24,9 @@ export class ModalComponent implements OnInit {
 
   saveChanges(){
     this.SaveChangesEvent.emit();
+  }
+  deleteChanges(){
+    this.DeleteChangesEvent.emit();
   }
 
 

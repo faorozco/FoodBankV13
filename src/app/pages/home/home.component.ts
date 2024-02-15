@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
   btnSaveTextModal: string = 'Save';
   btnCloseTextModal: string = 'Close';
   beneficiary!: any;
+  deleteBtnModal: boolean = false;
+  saveBtnModal: boolean = false;
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -32,14 +34,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   deliveryBeneficiaryModal(data: any){
+    this.saveBtnModal= true;
     this.beneficiary = data;
     this.modalTitle = 'Delivery Beneficiary';
-    this.bodyText = `Are you sure you want to deliver the beneficiary: ${data.Name} ${data.LastName}?`;
+    this.bodyText = `Are you sure you want to deliver ${data.Name} ${data.LastName}?`;
     this.btnSaveTextModal = 'Deliver';
     this.btnCloseTextModal = 'Cancel';
   }
 
   deleteBeneficiaryModal(data: any) {
+    this.deleteBtnModal = true;
     this.beneficiary = data;
     this.modalTitle = 'Delete Beneficiary';
     this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
@@ -47,13 +51,14 @@ export class HomeComponent implements OnInit {
     this.btnCloseTextModal = 'Cancel';
   }
 
-  saveChangesModal(): void {
-    if (this.btnSaveTextModal == 'Delete') {
+  deleteChangesModal(): void {
+    this.deleteBtnModal = false;
       this.deleteBeneficiary(this.beneficiary);
-    }
-    else if (this.btnSaveTextModal == 'Deliver') {
+
+  }
+  saveChangesModal(): void {
+    this.saveBtnModal = true;
       this.delivery(this.beneficiary);
-    }
   }
 
   delivery(donate: BeneficiaryModel) {
@@ -67,7 +72,7 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
           this.alertText = '';
           this.alertType = 'none';
-        }, 5000);
+        }, 2000);
       },
     });
 

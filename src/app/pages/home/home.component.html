@@ -5,6 +5,9 @@
   [btnCloseText]="btnCloseTextModal"
   [btnSaveText]="btnSaveTextModal"
   (SaveChangesEvent)="saveChangesModal()"
+  (DeleteChangesEvent)="deleteChangesModal()"
+  [saveBtnModal]="saveBtnModal"
+  [deleteBtnModal]="deleteBtnModal"
 >
 <ng-content></ng-content>
 
@@ -97,7 +100,7 @@
           >
             volunteer_activism
           </span>
-          <span class="material-symbols-outlined" *ngIf="beneficiary.check">
+          <span class="material-symbols-outlined py-2" *ngIf="beneficiary.check">
             done
           </span>
         </td>
