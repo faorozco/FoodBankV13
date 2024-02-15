@@ -10,8 +10,20 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{btnCloseText}}</button>
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveChanges()"  *ngIf="saveBtnModal">{{btnSaveText}}</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteChanges()" *ngIf="deleteBtnModal">{{btnSaveText}}</button>
+
+
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveChanges()"  *ngIf="colorBtnSave === 'success'">
+            <span class="material-symbols-outlined">
+              {{btnSaveText}}
+              </span>
+          </button>
+
+
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="saveChanges()"  *ngIf="colorBtnSave === 'danger' ">
+            <span class="material-symbols-outlined">
+              {{btnSaveText}}
+              </span>
+          </button>
         </div>
       </div>
     </div>

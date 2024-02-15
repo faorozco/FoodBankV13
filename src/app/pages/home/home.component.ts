@@ -19,11 +19,10 @@ export class HomeComponent implements OnInit {
   check = false;
   modalTitle: string = 'Modal Title';
   bodyText: string = 'Aqui se coloca el texto';
-  btnSaveTextModal: string = 'Save';
+  btnSaveTextModal: 'delete' | 'volunteer_activism' = 'volunteer_activism';
   btnCloseTextModal: string = 'Close';
   beneficiary!: any;
-  deleteBtnModal: boolean = false;
-  saveBtnModal: boolean = false;
+  colorBtnSave: 'success' | 'danger' = 'success';
 
   constructor(private sheetConection: SheetConectionService) {
     this.form = new FormGroup({
@@ -33,32 +32,30 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  deliveryBeneficiaryModal(data: any){
-    this.saveBtnModal= true;
+  deliveryBeneficiaryModal(data: any) {
+    this.colorBtnSave = 'success';
     this.beneficiary = data;
     this.modalTitle = 'Delivery Beneficiary';
     this.bodyText = `Are you sure you want to deliver ${data.Name} ${data.LastName}?`;
-    this.btnSaveTextModal = 'Deliver';
+    this.btnSaveTextModal = 'volunteer_activism';
     this.btnCloseTextModal = 'Cancel';
   }
 
   deleteBeneficiaryModal(data: any) {
-    this.deleteBtnModal = true;
     this.beneficiary = data;
     this.modalTitle = 'Delete Beneficiary';
     this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
-    this.btnSaveTextModal = 'Delete';
+    this.btnSaveTextModal = 'delete';
     this.btnCloseTextModal = 'Cancel';
+    this.colorBtnSave = 'danger';
   }
 
-  deleteChangesModal(): void {
-    this.deleteBtnModal = false;
-      this.deleteBeneficiary(this.beneficiary);
-
-  }
   saveChangesModal(): void {
-    this.saveBtnModal = true;
+    if (this.btnSaveTextModal === 'volunteer_activism') {
       this.delivery(this.beneficiary);
+    } else if (this.btnSaveTextModal === 'delete') {
+      this.deleteBeneficiary(this.beneficiary);
+    }
   }
 
   delivery(donate: BeneficiaryModel) {
@@ -75,7 +72,6 @@ export class HomeComponent implements OnInit {
         }, 2000);
       },
     });
-
   }
 
   dateNow() {

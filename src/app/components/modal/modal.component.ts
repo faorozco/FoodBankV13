@@ -8,12 +8,12 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 export class ModalComponent implements OnInit {
 @Input() modalTitle: string = 'Modal Title';
 @Input() bodyText: string = 'Body Text';
-@Input() btnSaveText: string = 'Save changes';
+@Input() btnSaveText: 'delete' | 'volunteer_activism' = 'delete';
+@Input() colorBtnSave: 'success' | 'danger' = 'success';
 @Input() btnCloseText: string = 'Close';
 @Input() deleteBtnModal: boolean = false;
 @Input() saveBtnModal: boolean = false;
 @Output() SaveChangesEvent: EventEmitter<any> = new EventEmitter();
-@Output() DeleteChangesEvent: EventEmitter<any> = new EventEmitter();
 
 
   constructor() { }
@@ -25,9 +25,7 @@ export class ModalComponent implements OnInit {
   saveChanges(){
     this.SaveChangesEvent.emit();
   }
-  deleteChanges(){
-    this.DeleteChangesEvent.emit();
-  }
+
 
 
 }
