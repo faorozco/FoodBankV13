@@ -11,6 +11,8 @@ import { RegisterNewBeneficiaryComponent } from './pages/register-new-beneficiar
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { FormComponent } from './components/form/form.component';
+import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-beneficiary.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { AlertComponent } from './components/alert/alert.component';
     RegisterNewBeneficiaryComponent,
     ModalComponent,
     AlertComponent,
+    FormComponent,
+    UpdateBeneficiaryComponent,
   ],
   imports: [
     BrowserModule,
