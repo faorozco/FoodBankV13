@@ -1,7 +1,7 @@
 <app-alert [alertText]="alertText" [alertType]="alertType" ></app-alert>
 
 <div class="container-fluid p-4">
-  <h3 class="text-center pb-2">New Beneficiary</h3>
+  <app-title [title]="title"></app-title>
   <form [formGroup]="formSheet" (onSubmit)="onSubmit()">
     <div *ngIf="partForm == 1">
       <!-- Tipo de documento y numero -->

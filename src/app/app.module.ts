@@ -13,6 +13,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { FormComponent } from './components/form/form.component';
 import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-beneficiary.component';
+import { TitleComponent } from './components/title/title.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-be
     AlertComponent,
     FormComponent,
     UpdateBeneficiaryComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,
