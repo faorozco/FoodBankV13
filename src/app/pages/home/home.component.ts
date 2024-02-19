@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
 
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   beneficiary!: any;
   colorBtnSave: 'success' | 'danger' = 'success';
 
-  constructor(private sheetConection: SheetConectionService) {
+  constructor(private sheetConection: SheetConectionService, private router: Router) {
     this.form = new FormGroup({
       search: new FormControl('', Validators.required),
     });
@@ -135,5 +136,11 @@ export class HomeComponent implements OnInit {
         }, 5000);
       },
     });
+  }
+
+
+
+  updateBeneficiary(beneficiary: any){
+    this.router.navigate(['/update-beneficiary']);
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  @Input() partForm: number = 1;
+  @Input() activeSubmit: boolean = true;
+  @Input() formGroup!: FormGroup;
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  next(): void {
+    this.partForm = 2;
+  }
+
+  back(): void {
+    this.partForm = 1;
+  }
+
+  Submit(){
+    this.onSubmit.emit();
+
+
   }
 
 }

@@ -11,6 +11,7 @@ import { SheetConectionService } from 'src/app/services/sheet-conection.service'
 export class RegisterNewBeneficiaryComponent implements OnInit {
   partForm: number = 1;
   formSheet!: FormGroup;
+  formTemp!: FormGroup;
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   activeSubmit = true;
@@ -32,7 +33,6 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       Address: new FormControl('', Validators.required),
       PhoneNumber: new FormControl('', [
         Validators.required,
-        // Validators.minLength(10),
         Validators.pattern(/^\d+$/),
       ]),
       Nationality: new FormControl('', Validators.required),
@@ -52,6 +52,8 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
 
   next(): void {
     this.partForm = 2;
+    this.formTemp = this.formSheet
+    console.log(this.formTemp.value)
   }
 
   back(): void {

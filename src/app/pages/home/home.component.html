@@ -8,11 +8,10 @@
   (SaveChangesEvent)="saveChangesModal()"
  
 >
-<ng-content></ng-content>
-
 </app-modal>
 
 <h2 class="text-center mt-2">Welcome to Food Bank Registration!</h2>
+<app-title [title]="'Select the option'"></app-title>
 <!-- <p class="text-center my-2">Search by name or document number...</p> -->
 
 <div class="row">
@@ -79,7 +78,7 @@
     <tbody>
       <tr *ngFor="let beneficiary of dataTable">
         <td>
-          <span class="material-symbols-outlined cursor py-2">
+          <span class="material-symbols-outlined cursor py-2" (click)="updateBeneficiary(beneficiary)">
             edit
           </span>
         </td>

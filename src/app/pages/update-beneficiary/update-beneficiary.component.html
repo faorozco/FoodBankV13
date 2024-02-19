@@ -1,1 +1,11 @@
-<p>update-beneficiary works!</p>
+<app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
+
+<div class="container-fluid p-4">
+  <app-title [title]="title"></app-title>
+  <app-form
+    [formGroup]="formSheet"
+    [partForm]="partForm"
+    [activeSubmit]="activeSubmit"
+    (onSubmit)="onSubmit()"
+  ></app-form>
+</div>
