@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
-
 
 @Component({
   selector: 'app-update-beneficiary',
@@ -12,16 +11,21 @@ import { SheetConectionService } from 'src/app/services/sheet-conection.service'
 export class UpdateBeneficiaryComponent implements OnInit {
   title = 'Update Beneficiary';
   formSheet!: FormGroup;
-  formTemp!: FormGroup;
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   alertText = '';
   partForm: number = 1;
   activeSubmit = true;
+  beneficiary: any = undefined;
 
   constructor(
     private sheetConection: SheetConectionService,
+    private route: ActivatedRoute,
     private router: Router
   ) {
+    
+  }
+
+  ngOnInit(): void {
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
       DocumentType: new FormControl('', Validators.required),
@@ -47,12 +51,18 @@ export class UpdateBeneficiaryComponent implements OnInit {
       MaleOver65: new FormControl('', Validators.required),
       photo: new FormControl('agregar link de carpeta', Validators.required),
     });
+    this.beneficiary = history.state.beneficiary;
+    this.formSheet.patchValue(this.beneficiary);
+    
+
+    if (this.beneficiary === undefined) {
+      this.router.navigate(['/']);
+    } 
+
+    
   }
 
-  ngOnInit(): void {}
-
-
-  onSubmit(){
+  onSubmit() {
     console.log(this.formSheet.value);
   }
 }

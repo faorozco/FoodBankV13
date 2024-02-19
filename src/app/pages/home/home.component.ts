@@ -25,7 +25,10 @@ export class HomeComponent implements OnInit {
   beneficiary!: any;
   colorBtnSave: 'success' | 'danger' = 'success';
 
-  constructor(private sheetConection: SheetConectionService, private router: Router) {
+  constructor(
+    private sheetConection: SheetConectionService,
+    private router: Router
+  ) {
     this.form = new FormGroup({
       search: new FormControl('', Validators.required),
     });
@@ -138,9 +141,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-
-  updateBeneficiary(beneficiary: any){
-    this.router.navigate(['/update-beneficiary']);
+  updateBeneficiary(beneficiary: any) {
+    this.router.navigate(['/update-beneficiary'], { state: { beneficiary } });
   }
 }
