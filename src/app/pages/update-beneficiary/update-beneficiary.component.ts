@@ -21,9 +21,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
     private sheetConection: SheetConectionService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
     this.formSheet = new FormGroup({
@@ -54,15 +52,32 @@ export class UpdateBeneficiaryComponent implements OnInit {
     this.beneficiary = history.state.beneficiary;
     this.formSheet.patchValue(this.beneficiary);
     
-
     if (this.beneficiary === undefined) {
       this.router.navigate(['/']);
-    } 
-
-    
+    }
   }
 
   onSubmit() {
-    console.log(this.formSheet.value);
+
+      return this.sheetConection.updateBeneficiary(this.beneficiary.index, this.formSheet.value).subscribe({
+        next: (res) => {
+          this.alertType = 'success';
+          this.alertText = 'Beneficiary updated successfully';
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2000);
+        },
+        error: (err) => {
+          this.alertType = 'danger';
+          this.alertText = 'An error occurred';
+          setTimeout(() => {
+            this.alertType = 'none';
+            this.alertText = '';
+          }, 2000);
+        },
+
+      });
+    
+    
   }
 }

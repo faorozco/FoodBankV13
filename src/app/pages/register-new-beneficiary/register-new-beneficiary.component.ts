@@ -64,7 +64,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
         .getCurrentDateTime()
         .toLocaleString(),
     };
-    if (this.formSheet.valid) {
+    if (this.formSheet.invalid) {
       this.sheetConection.newBeneficiary(body).subscribe({
         next: (res) => {
           this.alertText = 'the beneficiary has been created correctly';

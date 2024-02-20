@@ -64,7 +64,7 @@
         <div class="input-group">
           <span class="input-group-text">Birth of date</span>
           <input
-            type="date"
+            [type]="typeBirthDate"
             aria-label="birthdate"
             class="form-control"
             formControlName="BirthDate"
@@ -365,7 +365,7 @@
       (click)="Submit()"
       type="submit"
       class="btn btn-success mx-2"
-      *ngIf="activeSubmit"
+      [disabled]="activeSubmit"
     >
       Submit
     </button>

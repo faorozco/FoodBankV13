@@ -31,4 +31,8 @@ export class SheetConectionService {
     const dateTimeString = currentDate.toLocaleString();
     return dateTimeString;
   }
+
+  updateBeneficiary(id: number, body: BeneficiaryModel){
+    return this.http.put(`${this.url}/${id}`, body);
+  }
 }
