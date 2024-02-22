@@ -28,7 +28,6 @@ export class DeliveryComponent implements OnInit {
 
   inputText(text: any) {
     this.dataTable = this.filterArray(this.temporalData, text);
-    console.log(text);
   }
 
   filterArray(value: any[], search: string) {
@@ -60,7 +59,7 @@ export class DeliveryComponent implements OnInit {
       },
 
       error: () => {
-        alert('Try again later');
+        alert('try again later, check your internet connection');
       },
     });
   }

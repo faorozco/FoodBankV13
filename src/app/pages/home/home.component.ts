@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
         this.dataTable = this.temporalData;
       },
       error: () => {
-        alert('Try again later')
+        alert('try again later, check your internet connection')
       },
     });
   }
