@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
@@ -22,16 +22,14 @@ export class HomeComponent implements OnInit {
   bodyText: string = 'Aqui se coloca el texto';
   btnSaveTextModal: 'delete' | 'volunteer_activism' = 'volunteer_activism';
   btnCloseTextModal: string = 'Close';
-  beneficiary!: any;
+  beneficiary!: BeneficiaryModel;
   colorBtnSave: 'success' | 'danger' = 'success';
 
   constructor(
     private sheetConection: SheetConectionService,
     private router: Router
   ) {
-    this.form = new FormGroup({
-      search: new FormControl('', Validators.required),
-    });
+    
   }
 
   ngOnInit(): void {}
@@ -45,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.btnCloseTextModal = 'Cancel';
   }
 
-  deleteBeneficiaryModal(data: any) {
+  deleteBeneficiaryModal(data: BeneficiaryModel) {
     this.beneficiary = data;
     this.modalTitle = 'Delete Beneficiary';
     this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
@@ -86,6 +84,16 @@ export class HomeComponent implements OnInit {
     this.dataTable = this.filterArray(this.temporalData, text);
   }
 
+  filterArray(value: any[], search: string) {
+    return value.filter((arr) => {
+      return (
+        arr.nameUpperCase.includes(search.toUpperCase()) ||
+        arr.LastUpperCase.includes(search.toUpperCase()) ||
+        arr.DocumentNumber.includes(search.toUpperCase())
+      );
+    });
+  }
+
   getAllBeneficiaries() {
     this.sheetConection.getAllBeneficiaries().subscribe({
       next: (res) => {
@@ -100,21 +108,13 @@ export class HomeComponent implements OnInit {
         });
         this.dataTable = this.temporalData;
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
+        alert('Try again later')
       },
     });
   }
 
-  filterArray(value: any[], search: string) {
-    return value.filter((arr) => {
-      return (
-        arr.nameUpperCase.includes(search.toUpperCase()) ||
-        arr.LastUpperCase.includes(search.toUpperCase()) ||
-        arr.DocumentNumber.includes(search.toUpperCase())
-      );
-    });
-  }
+
 
   deleteBeneficiary(beneficiary: any) {
     return this.sheetConection.deleteBeneficiary(beneficiary.index).subscribe({

@@ -43,4 +43,8 @@ export class SheetConectionService {
     return this.http.get<any>(this.urlEntregados);
   }
 
+  deleteDelivery(id: number) {
+    return this.http.delete(`${this.urlEntregados}/${id}`);
+  }
+
 }

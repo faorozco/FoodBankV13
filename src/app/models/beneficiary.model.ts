@@ -24,4 +24,6 @@ export interface BeneficiaryModel {
     LastUpperCase?: string;
     DeliveryDate?: string;
     check?: boolean;
+    DeliveryHour?: string;
+    numberList?: string | number;
 }
