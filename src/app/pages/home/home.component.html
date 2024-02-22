@@ -10,32 +10,39 @@
 >
 </app-modal>
 
-<h2 class="text-center mt-2">Welcome to Food Bank Registration!</h2>
-<app-title [title]="'Select the option'"></app-title>
+<h2 class="text-center mt-4">Welcome to Food Bank <br> Registration!</h2>
+<!-- <app-title [title]="'Select the option'"></app-title> -->
 <!-- <p class="text-center my-2">Search by name or document number...</p> -->
 
-<div class="row">
-  <div class="container-fluid d-flex justify-content-center">
-    <div class="m-2">
+<div class="row mt-5">
+  <div class="container-fluid d-flex flex-column flex-md-row justify-content-center align-items-center">
+    <div class="m-4">
       <button
-        class=""
-        type="button"
         class="btn btn-success"
+        type="button"
         (click)="getAllBeneficiaries()"
         *ngIf="dataTable.length === 0"
       >
         List of beneficiaries
       </button>
     </div>
-    <div class="m-2">
+    <div class="m-4">
       <button
-        class=""
-        type="button"
         class="btn btn-warning"
+        type="button"
         routerLink="./new-beneficiary"
         (click)="getAllBeneficiaries()"
       >
         {{ new }}
+      </button>
+    </div>
+    <div class="m-4">
+      <button
+        class="btn btn-danger"
+        type="button"
+        routerLink="./deliveries"
+      >
+      Deliveries
       </button>
     </div>
   </div>

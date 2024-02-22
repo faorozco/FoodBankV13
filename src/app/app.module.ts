@@ -14,6 +14,8 @@ import { AlertComponent } from './components/alert/alert.component';
 import { FormComponent } from './components/form/form.component';
 import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-beneficiary.component';
 import { TitleComponent } from './components/title/title.component';
+import { DeliveryComponent } from './pages/delivery/delivery.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { TitleComponent } from './components/title/title.component';
     FormComponent,
     UpdateBeneficiaryComponent,
     TitleComponent,
+    DeliveryComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,

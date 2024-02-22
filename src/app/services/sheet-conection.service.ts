@@ -14,9 +14,7 @@ export class SheetConectionService {
   newBeneficiary(body: BeneficiaryModel) {
     return this.http.post<BeneficiaryModel>(this.url, body);
   }
-  delivery(body: BeneficiaryModel) {
-    return this.http.post<BeneficiaryModel>(this.urlEntregados, body);
-  }
+
 
   getAllBeneficiaries() {
     return this.http.get<any>(this.url);
@@ -35,4 +33,14 @@ export class SheetConectionService {
   updateBeneficiary(id: number, body: BeneficiaryModel){
     return this.http.put(`${this.url}/${id}`, body);
   }
+
+  delivery(body: BeneficiaryModel) {
+    return this.http.post<BeneficiaryModel>(this.urlEntregados, body);
+  }
+
+
+  getAllDeliveries() {
+    return this.http.get<any>(this.urlEntregados);
+  }
+
 }
