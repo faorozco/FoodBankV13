@@ -11,10 +11,12 @@
 
 
 <app-title [title]="'Deliveries'"></app-title>
+<p class="text-center">Total registros:  {{ this.dataTable.length }} registros</p>
 
 <div class="container-fluid d-flex justify-content-center">
-    <button type="button" class="btn btn-info" routerLink="./statistics">Statistics</button>
+  <button type="button" class="btn btn-info" routerLink="./statistics">Statistics</button>
 </div>
+
 
 <!-- ********* formulario ************* -->
 

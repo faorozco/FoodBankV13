@@ -16,7 +16,10 @@ import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-be
 import { TitleComponent } from './components/title/title.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,12 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule,
+    MatProgressBarModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
