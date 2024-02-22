@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressBarModule,
     MatButtonModule,
     MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
