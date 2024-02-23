@@ -12,6 +12,7 @@ export class StatisticsComponent implements OnInit {
   allDates = new Array();
   selectedDates = new Array();
   toppings = new FormControl();
+  filteredDates = new Array();
 
   constructor(private router: Router) {}
 
@@ -26,15 +27,23 @@ export class StatisticsComponent implements OnInit {
         .filter(
           (date: any, index: number, self: any[]) =>
             self.indexOf(date) === index
-        ).reverse();  
+        )
+        .reverse();
     }
   }
 
-  addDate(){
-    this.selectedDates = []
-    this.selectedDates.push(this.toppings.value)
-    console.log(this.selectedDates)
-    console.log('funciona')
+  addDate() {
+    this.selectedDates = new Array<Date>();
+    this.selectedDates.push(this.toppings.value);
+    this.filteredDates = this.filterResults(this.dataDelivery, this.selectedDates);
+    console.log('dataDelivery::::> ', this.dataDelivery);
+    console.log('filteredDates::::> ', this.filteredDates);
+    console.log('selecccionados::: >', this.selectedDates);
   }
 
+  filterResults(beneficiaries: any[], selectedDates: Date[]) {
+    return beneficiaries.filter((beneficiary) => {
+      return selectedDates.some(d => d.toString() === beneficiary.DeliveryDate.toString())
+    })
+  }
 }

@@ -1,38 +1,36 @@
 <app-title [title]="'Statistics'"></app-title>
 
-<h3 class="text-center">Selected dates</h3>
+<!-- <h3 class="text-center">Selected dates</h3> -->
 
 <!-- ********* formulario ************* -->
 <div class="row p-4" *ngIf="dataDelivery.length !== 0">
-
   <div class="col-10 d-flex flex-column">
-
-
     <mat-form-field appearance="outline">
       <mat-label>Selected dates</mat-label>
       <mat-select [formControl]="toppings" multiple>
-        <mat-option *ngFor="let date of allDates" [value]="date">{{date}}</mat-option>
+        <mat-option *ngFor="let date of allDates" [value]="date">{{
+          date
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
-
   </div>
   <div class="col-2 d-flex justify-content-center align-content-center">
-    <button (click)="addDate()" mat-fab color="primary" aria-label="Example icon button with a home icon">
+    <button
+      (click)="addDate()"
+      mat-fab
+      color="primary"
+      aria-label="Example icon button with a home icon"
+    >
       <mat-icon>search</mat-icon>
     </button>
   </div>
 </div>
-
-
-<div>
-
-
-
-
-  
+  <!-- RESULTS -->
+<div *ngIf="selectedDates.length > 0">
   <div class="row results">
-    <div class="col-12 text-center d-flex flex-column justify-content-center px-5">
-
+    <div
+      class="col-12 text-center d-flex flex-column justify-content-center px-5"
+    >
       <table class="table">
         <thead>
           <tr>
@@ -42,8 +40,7 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2" class="pt-4">
-              Over 65 years old</td>
+            <td colspan="2" class="pt-4"> Over 65 years old</td>
           </tr>
           <tr class="table-danger">
             <th scope="row">Female</th>
@@ -86,19 +83,16 @@
             <th scope="row">Male</th>
             <td>10</td>
           </tr>
+          <tr class="table-warning">
+            <th scope="row">TOTAL RECORDS</th>
+            <td><strong> 10 </strong></td>
+          </tr>
+          <tr class="table-warning">
+            <th scope="row">TOTAL BENEFICIARIES</th>
+            <td> <strong> 10 </strong></td>
+          </tr>
         </tbody>
       </table>
-      
-      
-
-
-
-
-
-
-
-
-
 
       <!-- <h3>Total registros:   114</h3>
       <h3>Total beneficiados: 254</h3>
@@ -113,11 +107,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-

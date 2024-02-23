@@ -15,7 +15,7 @@
 
 <div class="container-fluid d-flex justify-content-center">
 
-  <button (click)="generateResult(temporalData)" mat-fab color="primary" aria-label="Example icon button with a home icon">
+  <button *ngIf="temporalData.length !== 0" (click)="generateResult(temporalData)" mat-fab color="primary" aria-label="Example icon button with a home icon">
     <mat-icon>bar_chart</mat-icon>
   </button>
 </div>
