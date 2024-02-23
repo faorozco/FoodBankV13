@@ -5,17 +5,112 @@
 <!-- ********* formulario ************* -->
 <div class="row p-4" *ngIf="dataDelivery.length !== 0">
 
-  <div class="col-10 d-flex justify-content-center align-content-center">
-    <select [formControl]="toppings" class="form-select form-select-lg" aria-label="Default select example">
-      <option selected>Select the dates</option>
-      <option *ngFor="let date of allDates" [value]="date">{{date}}</option>
-    </select>
+  <div class="col-10 d-flex flex-column">
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Selected dates</mat-label>
+      <mat-select [formControl]="toppings" multiple>
+        <mat-option *ngFor="let date of allDates" [value]="date">{{date}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
   </div>
   <div class="col-2 d-flex justify-content-center align-content-center">
     <button (click)="addDate()" mat-fab color="primary" aria-label="Example icon button with a home icon">
-      <mat-icon>add</mat-icon>
+      <mat-icon>search</mat-icon>
     </button>
+  </div>
+</div>
+
+
+<div>
+
+
+
+
+  
+  <div class="row results">
+    <div class="col-12 text-center d-flex flex-column justify-content-center p-5">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2" class="pt-4">
+              Over 65 years</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Female</th>
+            <td>10</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Male</th>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-4">People between 18 and 64 years old</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Female</th>
+            <td>10</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Male</th>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-4">People between 5 and 17 years old</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Female</th>
+            <td>10</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Male</th>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pt-4">People between 0 and 4 years old</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Female</th>
+            <td>10</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Male</th>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+
+
+
+
+
+
+
+
+
+
+      <!-- <h3>Total registros:   114</h3>
+      <h3>Total beneficiados: 254</h3>
+      <p>Famale +65: <strong>10</strong></p>
+      <p>Male +65: <strong>10</strong></p>
+      <p>Famale 18 - 64: <strong>10</strong></p>
+      <p>Male 18 - 64: <strong>10</strong></p>
+      <p>Famale 5 - 17: <strong>10</strong></p>
+      <p>Male 5 - 17: <strong>10</strong></p>
+      <p>Famale 0 - 4: <strong>10</strong></p>
+      <p>Male 0 - 4: <strong>10</strong></p> -->
+    </div>
   </div>
 </div>
 
@@ -23,13 +118,6 @@
 
 
 
-<!-- <div class="d-flex flex-column p-4">
-  <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select [formControl]="toppings" multiple>
-      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
-        topping
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div> -->
+
+
+

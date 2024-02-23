@@ -19,7 +19,7 @@ export class StatisticsComponent implements OnInit {
     this.dataDelivery = history.state.data;
 
     if (this.dataDelivery === undefined) {
-      this.router.navigate(['./deliveries']);
+      // this.router.navigate(['./deliveries']);
     } else {
       this.allDates = this.dataDelivery
         .map((delivery: any) => delivery.DeliveryDate)
@@ -27,20 +27,14 @@ export class StatisticsComponent implements OnInit {
           (date: any, index: number, self: any[]) =>
             self.indexOf(date) === index
         ).reverse();  
-
-        
-    console.log(this.toppings)
-
     }
   }
 
   addDate(){
-
+    this.selectedDates = []
     this.selectedDates.push(this.toppings.value)
     console.log(this.selectedDates)
     console.log('funciona')
-
-
   }
 
 }
