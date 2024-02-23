@@ -19,7 +19,7 @@ export class StatisticsComponent implements OnInit {
     this.dataDelivery = history.state.data;
 
     if (this.dataDelivery === undefined) {
-      // this.router.navigate(['./deliveries']);
+      this.router.navigate(['./deliveries']);
     } else {
       this.allDates = this.dataDelivery
         .map((delivery: any) => delivery.DeliveryDate)
