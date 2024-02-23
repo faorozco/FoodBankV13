@@ -14,7 +14,10 @@
 <p class="text-center">Total registros:  {{ this.dataTable.length }} registros</p>
 
 <div class="container-fluid d-flex justify-content-center">
-  <button type="button" class="btn btn-info" routerLink="./statistics">Statistics</button>
+
+  <button (click)="generateResult(temporalData)" mat-fab color="primary" aria-label="Example icon button with a home icon">
+    <mat-icon>bar_chart</mat-icon>
+  </button>
 </div>
 
 
@@ -40,7 +43,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <!-- <th scope="col">Edit</th> -->
+ 
           <th scope="col">#</th>
           <th scope="col">Delivery date</th>
           <th scope="col">Delivery hour</th>
@@ -48,17 +51,13 @@
           <th class="anchor" scope="col-4">Name</th>
           <th class="anchor" scope="col-4">Lastname</th>
           <th scope="col">Nationality</th>
-          <!-- <th scope="col">Donate</th>-->
+
            <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let beneficiary of dataTable">
-          <!-- <td>
-            <span class="material-symbols-outlined cursor py-2" (click)="updateBeneficiary(beneficiary)">
-              edit
-            </span>
-          </td> -->
+
           <td>{{ beneficiary.numberList}}</td>
           <td>{{ beneficiary.DeliveryDate }}</td>
           <td>{{ beneficiary.DeliveryHour }}</td>
@@ -67,20 +66,6 @@
           <td class="anchor">{{ beneficiary.LastName }}</td>
           <td>{{ beneficiary.Nationality }}</td>
   
-          <!-- <td>
-            <span
-              class="material-symbols-outlined cursor py-2"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              *ngIf="!beneficiary.check"
-              (click)="deliveryBeneficiaryModal(beneficiary)"
-            >
-              volunteer_activism
-            </span>
-            <span class="material-symbols-outlined py-2" *ngIf="beneficiary.check">
-              done
-            </span>
-          </td> -->
           <td>
             <span
               class="material-symbols-outlined cursor py-2"

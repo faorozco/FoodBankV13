@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
 
@@ -19,8 +20,10 @@ export class DeliveryComponent implements OnInit {
   btnSaveTextModal: 'delete' | 'volunteer_activism' = 'volunteer_activism';
   beneficiary!: BeneficiaryModel;
 
-
-  constructor(private sheetConectionService: SheetConectionService) {}
+  constructor(
+    private sheetConectionService: SheetConectionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllDelivery();
@@ -102,5 +105,9 @@ export class DeliveryComponent implements OnInit {
         }, 5000);
       },
     });
+  }
+
+  generateResult(data: any) {
+    this.router.navigate(['./deliveries/statistics'], {state: { data }})
   }
 }

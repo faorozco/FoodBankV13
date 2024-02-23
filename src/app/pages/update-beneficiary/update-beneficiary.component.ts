@@ -19,7 +19,6 @@ export class UpdateBeneficiaryComponent implements OnInit {
 
   constructor(
     private sheetConection: SheetConectionService,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
 
