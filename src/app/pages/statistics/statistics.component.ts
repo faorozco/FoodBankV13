@@ -15,6 +15,14 @@ export class StatisticsComponent implements OnInit {
   filteredDates = new Array();
   totalRecords: number = 0
   totalFemale65: number = 0
+  totalMale65: number = 0
+  totalFemale18_64: number = 0
+  totalMale18_64: number = 0
+  totalFemale5_17: number = 0
+  totalMale5_17: number = 0
+  totalFemale0_4: number = 0
+  totalMalele0_4: number = 0
+  totalBeneficiaries: number = 0
 
 
 
@@ -40,10 +48,8 @@ export class StatisticsComponent implements OnInit {
     this.selectedDates = new Array<Date>();
     this.selectedDates.push(this.toppings.value);
     this.filteredDates = this.filterResults(this.dataDelivery, this.selectedDates);
-    this.totalFemale65 = this.generatorFemale65(this.filteredDates)
-    console.log('dataDelivery::::> ', this.dataDelivery);
+    this.totalFemale65 = this.generatorGenderCount(this.filteredDates, 'FemaleOver65')
     console.log('filteredDates::::> ', this.filteredDates);
-    console.log('selecccionados::: >', this.selectedDates);
   }
 
   filterResults(beneficiaries: any[], selectedDates: Date[]) {
@@ -52,9 +58,12 @@ export class StatisticsComponent implements OnInit {
     })
   }
 
-  generatorFemale65(data: any): number {
-
-    return data = 20
-    
+  generatorGenderCount(data: any, gender: string): number {
+    let accumulator = 0;
+    data.map((b: any) => {
+      const current = parseInt(b[gender]);
+      accumulator += current;
+    });
+    return accumulator;
   }
 }
