@@ -13,6 +13,10 @@ export class StatisticsComponent implements OnInit {
   selectedDates = new Array();
   toppings = new FormControl();
   filteredDates = new Array();
+  totalRecords: number = 0
+  totalFemale65: number = 0
+
+
 
   constructor(private router: Router) {}
 
@@ -36,6 +40,7 @@ export class StatisticsComponent implements OnInit {
     this.selectedDates = new Array<Date>();
     this.selectedDates.push(this.toppings.value);
     this.filteredDates = this.filterResults(this.dataDelivery, this.selectedDates);
+    this.totalFemale65 = this.generatorFemale65(this.filteredDates)
     console.log('dataDelivery::::> ', this.dataDelivery);
     console.log('filteredDates::::> ', this.filteredDates);
     console.log('selecccionados::: >', this.selectedDates);
@@ -45,5 +50,11 @@ export class StatisticsComponent implements OnInit {
     return beneficiaries.filter((beneficiary) => {
       return selectedDates.some(d => d.toString() === beneficiary.DeliveryDate.toString())
     })
+  }
+
+  generatorFemale65(data: any): number {
+
+    return data = 20
+    
   }
 }
