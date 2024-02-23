@@ -21,7 +21,7 @@ export class StatisticsComponent implements OnInit {
   totalFemale5_17: number = 0
   totalMale5_17: number = 0
   totalFemale0_4: number = 0
-  totalMalele0_4: number = 0
+  totalMale0_4: number = 0
   totalBeneficiaries: number = 0
 
 
@@ -45,18 +45,27 @@ export class StatisticsComponent implements OnInit {
   }
 
   addDate() {
-    this.selectedDates = new Array<Date>();
-    this.selectedDates.push(this.toppings.value);
+    this.selectedDates = this.toppings.value;
     this.filteredDates = this.filterResults(this.dataDelivery, this.selectedDates);
     this.totalFemale65 = this.generatorGenderCount(this.filteredDates, 'FemaleOver65')
+    this.totalMale65 = this.generatorGenderCount(this.filteredDates, 'MaleOver65')
+    this.totalFemale18_64 = this.generatorGenderCount(this.filteredDates, 'FemaleBetween18_64')
+    this.totalMale18_64 = this.generatorGenderCount(this.filteredDates, 'MaleBetween18_64')
+    this.totalFemale5_17 = this.generatorGenderCount(this.filteredDates, 'FemaleBetween5_17')
+    this.totalMale5_17 = this.generatorGenderCount(this.filteredDates, 'MaleBetween5_17')
+    this.totalFemale0_4 = this.generatorGenderCount(this.filteredDates, 'FemaleBetween0_4')
+    this.totalMale0_4 = this.generatorGenderCount(this.filteredDates, 'MaleBetween0_4')
+    this.totalBeneficiaries = this.totalFemale65 + this.totalMale65 + this.totalFemale18_64 + this.totalMale18_64 + this.totalFemale5_17 + this.totalMale5_17 + this.totalFemale0_4 + this.totalMale0_4
     console.log('filteredDates::::> ', this.filteredDates);
+    console.log('selectedDates::::> ', this.selectedDates);
   }
 
-  filterResults(beneficiaries: any[], selectedDates: Date[]) {
+  filterResults(beneficiaries: any[], selectedDates: any[]) {
     return beneficiaries.filter((beneficiary) => {
       return selectedDates.some(d => d.toString() === beneficiary.DeliveryDate.toString())
     })
   }
+
 
   generatorGenderCount(data: any, gender: string): number {
     let accumulator = 0;
