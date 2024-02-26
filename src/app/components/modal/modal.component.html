@@ -8,8 +8,10 @@
         <div class="modal-body">
           {{bodyText}}
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer d-flex justify-content-between">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{btnCloseText}}</button>
+
+          
 
 
           <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveChanges()"  *ngIf="colorBtnSave === 'success'">
