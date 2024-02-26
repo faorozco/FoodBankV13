@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import { CardButtonComponent } from './components/card-button/card-button.component';
+import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-beneficiary.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CardButtonComponent } from './components/card-button/card-button.compon
     DeliveryComponent,
     StatisticsComponent,
     CardButtonComponent,
+    ListBeneficiaryComponent,
   ],
   imports: [
     BrowserModule,

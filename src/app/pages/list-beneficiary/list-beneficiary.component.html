@@ -1,0 +1,84 @@
+<app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
+
+<app-modal
+  [modalTitle]="modalTitle"
+  [bodyText]="bodyText"
+  [btnCloseText]="btnCloseTextModal"
+  [btnSaveText]="btnSaveTextModal"
+  [colorBtnSave]="colorBtnSave"
+  (SaveChangesEvent)="saveChangesModal()"
+ 
+>
+</app-modal>
+
+<div class="container-fluid p-4">
+  <app-title [title]="'List of beneficiaries'"></app-title>
+
+  <!-- ********* formulario ************* -->
+
+  <div class="row p-4" *ngIf="temporalData.length !== 0">
+    <div class="input-group mb-3">
+      <input
+        #text
+        placeholder="Search by name or document number..."
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        (keyup)="inputText(text.value)"
+      />
+    </div>
+  </div>
+
+  <!-- ********* tabla ************* -->
+  <div class="table px-2" *ngIf="temporalData.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Edit</th>
+          <th class="anchor" scope="col-4">Document</th>
+          <th class="anchor" scope="col-4">Name</th>
+          <th class="anchor" scope="col-4">Lastname</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Donate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let beneficiary of dataTable">
+          <td>
+            <span
+              class="material-symbols-outlined cursor py-2"
+              (click)="updateBeneficiary(beneficiary)"
+            >
+              edit
+            </span>
+          </td>
+          <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
+          <td class="anchor">{{ beneficiary.Name }}</td>
+          <td class="anchor">{{ beneficiary.LastName }}</td>
+          <td>{{ beneficiary.PhoneNumber }}</td>
+          <td>{{ beneficiary.Nationality }}</td>
+
+          <td>
+            <span
+              class="material-symbols-outlined cursor py-2"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              *ngIf="!beneficiary.check"
+              (click)="deliveryBeneficiaryModal(beneficiary)"
+            >
+              volunteer_activism
+            </span>
+            <span
+              class="material-symbols-outlined py-2"
+              *ngIf="beneficiary.check"
+            >
+              done
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
