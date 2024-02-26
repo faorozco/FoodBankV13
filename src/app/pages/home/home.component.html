@@ -3,38 +3,6 @@
     <app-title [title]="'¡Hi, 👋 volunteer!'"></app-title>
     <h1>Welcome to Food Bank Registration</h1>
   </div>
-
-<!-- 
-  <div class="row">
-    <div
-      class="d-flex flex-column flex-md-row justify-content-center align-items-center"
-    >
-      <div>
-        <button
-          class="btn btn-success"
-          type="button"
-          routerLink="./list-beneficiaries"
-        >
-          List of beneficiaries
-        </button>
-      </div>
-      <div>
-        <button
-          class="btn btn-warning"
-          type="button"
-          routerLink="./new-beneficiary"
-        >
-          New beneficiary
-        </button>
-      </div>
-      <div class="">
-        <button class="btn btn-danger" type="button" routerLink="./deliveries">
-          Delivery list
-        </button>
-      </div>
-    </div>
-  </div> -->
-
   <div class="cards-buttons d-flex justify-content-center p-4">
     <app-card-button
     *ngFor="let card of cards"
