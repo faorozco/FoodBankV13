@@ -14,7 +14,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   activeSubmit = true;
-  title: string = 'New beneficiary'
+  title: string = 'New beneficiary';
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -64,29 +64,25 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
         .getCurrentDateTime()
         .toLocaleString(),
     };
-    if (this.formSheet.invalid) {
-      this.sheetConection.newBeneficiary(body).subscribe({
-        next: (res) => {
-          this.alertText = 'the beneficiary has been created correctly';
-          this.alertType = 'success';
-          this.activeSubmit = false;
-          setTimeout(() => {
-            this.alertText = '';
-            this.alertType = 'none';
-            this.router.navigate(['/']);
-          }, 3000);
-        },
-        error: (err) => {
-          this.alertText = 'Try again later';
-          this.alertType = 'danger';
-          setTimeout(() => {
-            this.alertText = '';
-            this.alertType = 'none';
-          }, 5000);
-        },
-      });
-    } else {
-      alert('Formulario invalido, por favor llene todos los campos.');
-    }
+    this.sheetConection.newBeneficiary(body).subscribe({
+      next: () => {
+        this.alertText = 'the beneficiary has been created correctly';
+        this.alertType = 'success';
+        this.activeSubmit = false;
+        setTimeout(() => {
+          this.alertText = '';
+          this.alertType = 'none';
+          this.router.navigate(['/']);
+        }, 3000);
+      },
+      error: () => {
+        this.alertText = 'Try again later';
+        this.alertType = 'danger';
+        setTimeout(() => {
+          this.alertText = '';
+          this.alertType = 'none';
+        }, 5000);
+      },
+    });
   }
 }
