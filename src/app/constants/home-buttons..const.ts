@@ -19,5 +19,12 @@ export const HOME_BUTTONS = [
         button: 'List of beneficiaries',
         pathImag: '../../../assets/imgs/list-beneficiary.jpg'
 
+    },
+    {
+        text: 'Listar y administrar de las entregas of the Foundation Maria Luisa de Moreno International',
+        router: './deliveries',
+        button: 'List of deliveries',
+        pathImag: '../../../assets/imgs/list-deliveries.jpg'
+
     }
 ]
