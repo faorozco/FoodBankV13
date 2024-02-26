@@ -9,41 +9,44 @@
 >
 </app-modal>
 
+<div class="container-delivery">
+  <app-title [title]="'Deliveries'"></app-title>
+  <p class="text-center">
+    Total registros: {{ this.dataTable.length }} registros
+  </p>
 
-<app-title [title]="'Deliveries'"></app-title>
-<p class="text-center">Total registros:  {{ this.dataTable.length }} registros</p>
-
-<div class="container-fluid d-flex justify-content-center">
-
-  <button *ngIf="temporalData.length !== 0" (click)="generateResult(temporalData)" mat-fab color="primary" aria-label="Example icon button with a home icon">
-    <mat-icon>bar_chart</mat-icon>
-  </button>
-</div>
-
-
-<!-- ********* formulario ************* -->
-
-<div class="row p-4" *ngIf="temporalData.length !== 0">
-  <div class="input-group mb-3">
-    <input
-      #text
-      placeholder="Search by name or document number..."
-      type="text"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-      (keyup)="inputText(text.value)"
-    />
+  <div class="container-fluid d-flex justify-content-center">
+    <button
+      *ngIf="temporalData.length !== 0"
+      (click)="generateResult(temporalData)"
+      mat-fab
+      color="primary"
+      aria-label="Example icon button with a home icon"
+    >
+      <mat-icon>bar_chart</mat-icon>
+    </button>
   </div>
-</div>
 
+  <!-- ********* formulario ************* -->
 
-<!-- ********* tabla ************* -->
-<div class="table px-2" *ngIf="temporalData.length > 0" class="">
+  <div class="row p-4" *ngIf="temporalData.length !== 0">
+    <div class="input-group mb-3">
+      <input
+        #text
+        placeholder="Search by name or document number..."
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        (keyup)="inputText(text.value)"
+      />
+    </div>
+  </div>
+
+  <div class="table px-2" *ngIf="temporalData.length > 0">
     <table class="table table-striped">
       <thead>
         <tr>
- 
           <th scope="col">#</th>
           <th scope="col">Delivery date</th>
           <th scope="col">Delivery hour</th>
@@ -52,20 +55,19 @@
           <th class="anchor" scope="col-4">Lastname</th>
           <th scope="col">Nationality</th>
 
-           <th scope="col">Delete</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let beneficiary of dataTable">
-
-          <td>{{ beneficiary.numberList}}</td>
+          <td>{{ beneficiary.numberList }}</td>
           <td>{{ beneficiary.DeliveryDate }}</td>
           <td>{{ beneficiary.DeliveryHour }}</td>
           <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
           <td class="anchor">{{ beneficiary.Name }}</td>
           <td class="anchor">{{ beneficiary.LastName }}</td>
           <td>{{ beneficiary.Nationality }}</td>
-  
+
           <td>
             <span
               class="material-symbols-outlined cursor py-2"
@@ -80,3 +82,6 @@
       </tbody>
     </table>
   </div>
+</div>
+
+<!-- ********* tabla ************* -->

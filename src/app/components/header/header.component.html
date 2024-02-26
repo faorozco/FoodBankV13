@@ -1,11 +1,54 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../assets/img-fimlm.png"
+        alt="30"
+        width="30"
+        height="30"
+        class="d-inline-block align-text-top"
+      />
+      Food Bank Registration
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="./">{{
+            home
+          }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="./list-beneficiaries">{{
+            optionOne
+          }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="./new-beneficiary">{{ optionTwo }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="./deliveries">{{ optionThree }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
     <span routerLink="./" class="navbar-brand mb-0 h1">{{ title }}</span>
       <button routerLink="./" mat-mini-fab color="link" aria-label="Example icon button with a home icon">
         <mat-icon>home</mat-icon>
       </button>
   </div>
-</nav>
-
-
-
+</nav> -->

@@ -1,5 +1,4 @@
 <app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
-
 <app-modal
   [modalTitle]="modalTitle"
   [bodyText]="bodyText"
@@ -16,8 +15,8 @@
 
   <!-- ********* formulario ************* -->
 
-  <div class="row p-4" *ngIf="temporalData.length !== 0">
-    <div class="input-group mb-3">
+  <div class="row" *ngIf="temporalData.length !== 0">
+    <div class="input-group">
       <input
         #text
         placeholder="Search by name or document number..."

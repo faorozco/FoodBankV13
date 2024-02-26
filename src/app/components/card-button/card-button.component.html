@@ -1,1 +1,8 @@
-<p>card-button works!</p>
+<div class="card" style="width: 18rem;">
+    <img [src]="pathImag" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-title">{{titleCardButton}}</h3>
+      <p class="card-text">{{textCardButton}}</p>
+      <a [routerLink]="routerCardButton" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>

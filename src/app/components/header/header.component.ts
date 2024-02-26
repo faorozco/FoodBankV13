@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OPTIONS } from 'src/app/constants/option.const';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title = 'FIMLM Food Bank'
-  new = 'New beneficiary'
+  title = 'FBR'
+  home = 'Home';
+  optionOne = OPTIONS.beneficiaryList;
+  optionTwo = OPTIONS.newBeneficiary;
+  optionThree = OPTIONS.deliveryList;
 
   constructor() { }
 
