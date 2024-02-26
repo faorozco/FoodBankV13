@@ -1,8 +1,9 @@
 <div class="card" style="width: 18rem;">
     <img [src]="pathImag" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h3 class="card-title">{{titleCardButton}}</h3>
-      <p class="card-text">{{textCardButton}}</p>
-      <a [routerLink]="routerCardButton" class="btn btn-primary">Go somewhere</a>
+    <div class="card-body d-flex flex-column justify-content-center">
+      <p class="card-text text-center">{{textCardButton}}</p>
+      <div class="d-flex justify-content-center align-items-end ">
+          <a [routerLink]="routerCardButton" class="btn btn-warning">{{buttonInCard}}</a>
+      </div>
     </div>
   </div>

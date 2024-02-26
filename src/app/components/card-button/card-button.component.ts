@@ -6,10 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card-button.component.css']
 })
 export class CardButtonComponent implements OnInit {
-  @Input() titleCardButton = 'Aqui va el titulo'
-  @Input() textCardButton = 'Aqui va el texto especificando el card a donde dirige'
+  @Input() textCardButton = 'Create a new beneficiary of the Foundation Maria Luisa de Moreno International'
   @Input() routerCardButton = './new-beneficiary'
-  @Input() pathImag = '../../../assets/imgs/camionjpg.jpg'
+  @Input() buttonInCard = 'New beneficiary'
+  @Input() pathImag = '../../../assets/imgs/newBeneficiary.jpg'
 
 
   constructor() { }
