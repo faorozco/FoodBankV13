@@ -9,6 +9,7 @@ import { HOME_BUTTONS } from 'src/app/constants/home-buttons..const';
 })
 export class HomeComponent implements OnInit {
   cards = HOME_BUTTONS;
+  passwordIncorrect: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
     if (password === '1234') {
       this.router.navigate(['./fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb']);
     } else {
-      console.log('Incorrect password');
+      this.passwordIncorrect = true;
+      setTimeout(() => {this.passwordIncorrect = false}, 3000);  
     }
   }
 }
