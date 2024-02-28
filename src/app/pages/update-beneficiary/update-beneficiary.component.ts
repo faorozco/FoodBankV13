@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheet-conection.service';
 
 @Component({
@@ -18,10 +19,9 @@ export class UpdateBeneficiaryComponent implements OnInit {
   beneficiary: any = undefined;
   modalTitle: string = 'Modal Title';
   bodyText: string = 'Aqui se coloca el texto';
-  btnSaveTextModal: 'delete' | 'volunteer_activism' = 'delete';
   btnCloseTextModal: string = 'Close';
+  btnSaveTextModal: 'delete' = 'delete';
   colorBtnSave: 'success' | 'danger' = 'danger';
-  
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -56,23 +56,24 @@ export class UpdateBeneficiaryComponent implements OnInit {
     });
     this.beneficiary = history.state.beneficiary;
     this.formSheet.patchValue(this.beneficiary);
-    
+
     if (this.beneficiary === undefined) {
       this.router.navigate(['/']);
     }
   }
 
   onSubmit() {
-
-      return this.sheetConection.updateBeneficiary(this.beneficiary.index, this.formSheet.value).subscribe({
-        next: (res) => {
+    return this.sheetConection
+      .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
+      .subscribe({
+        next: () => {
           this.alertType = 'success';
           this.alertText = 'Beneficiary updated successfully';
           setTimeout(() => {
             this.router.navigate(['/']);
           }, 2000);
         },
-        error: (err) => {
+        error: () => {
           this.alertType = 'danger';
           this.alertText = 'An error occurred';
           setTimeout(() => {
@@ -80,20 +81,9 @@ export class UpdateBeneficiaryComponent implements OnInit {
             this.alertText = '';
           }, 2000);
         },
-
       });
-    
-    
   }
 
-
-  deleteBeneficiary() {
-
-  }
-
-
-
-  
   deleteBeneficiaryModal() {
     this.modalTitle = 'Delete Beneficiary';
     this.bodyText = `Are you sure you want to delete ${this.beneficiary.Name} ${this.beneficiary.LastName}?`;
@@ -102,16 +92,16 @@ export class UpdateBeneficiaryComponent implements OnInit {
     this.colorBtnSave = 'danger';
   }
 
-  saveChangesModal(){
+  saveChangesModal() {
     return this.sheetConection.deleteBeneficiary(this.beneficiary.index).subscribe({
-      next: (res) => {
+      next: () => {
         this.alertType = 'success';
         this.alertText = 'Beneficiary deleted successfully';
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 2000);
       },
-      error: (err) => {
+      error: () => {
         this.alertType = 'danger';
         this.alertText = 'An error occurred';
         setTimeout(() => {
@@ -120,6 +110,5 @@ export class UpdateBeneficiaryComponent implements OnInit {
         }, 2000);
       },
     });
-
   }
 }

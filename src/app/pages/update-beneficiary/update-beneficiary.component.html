@@ -1,18 +1,5 @@
 <app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
 
-<app-modal
-  [modalTitle]="modalTitle"
-  [bodyText]="bodyText"
-  [btnCloseText]="btnCloseTextModal"
-  [btnSaveText]="btnSaveTextModal"
-  [colorBtnSave]="colorBtnSave"
-  (SaveChangesEvent)="saveChangesModal()"
- 
->
-</app-modal>
-
-
-
 <div class="container-update p-4">
   <app-title [title]="title"></app-title>
   <app-form
@@ -30,8 +17,20 @@
     (click)="deleteBeneficiaryModal()"
     mat-fab
     color="warn"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
     aria-label="Example icon button with a home icon"
   >
     <mat-icon>delete</mat-icon>
   </button>
 </div>
+
+<app-modal
+  [modalTitle]="modalTitle"
+  [bodyText]="bodyText"
+  [btnCloseText]="btnCloseTextModal"
+  [btnSaveText]="btnSaveTextModal"
+  [colorBtnSave]="colorBtnSave"
+  (SaveChangesEvent)="saveChangesModal()"
+>
+</app-modal>
