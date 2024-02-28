@@ -1,7 +1,7 @@
 <div class="container-form">
   <form [formGroup]="formGroup" (onSubmit)="Submit()">
     <!-- PARTE 1 -->
-    <div *ngIf="partForm == 1">
+    <div *ngIf="partForm == 1; else partTwo">
       <!-- Tipo de documento y numero -->
       <div class="row">
         <div class="input-group py-2">
@@ -146,234 +146,240 @@
           </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="partForm === 2">
-      <h3 class="text-center pb-2">How many people live with you?</h3>
-      <p class="text-center">Counting the respondent</p>
 
-      <!-- *************   ENTRE 0 A 4 ****** -->
-
-      <div class="row mt-2">
-        <p class="text-center mt-4">Between <strong>0 to 4 </strong>years</p>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Female</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="FemaleBetween0_4"
-            >
-              <option selected>How many people 0 - 4 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Male</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="MaleBetween0_4"
-            >
-              <option selected>How many people 0 - 4 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- *************   ENTRE 5 A 17 ****** -->
-
-      <div class="row mt-2">
-        <p class="text-center mt-4">Between <strong>5 to 17 </strong>years</p>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Female</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="FemaleBetween5_17"
-            >
-              <option selected>How many people 5 - 17 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Male</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="MaleBetween5_17"
-            >
-              <option selected>How many people 5 - 17 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- *************   ENTRE 18 A 64 ****** -->
-
-      <div class="row mt-2">
-        <p class="text-center mt-4">Between <strong>18 to 64 </strong>years</p>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Female</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="FemaleBetween18_64"
-            >
-              <option selected>How many people 18 - 64 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Male</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="MaleBetween18_64"
-            >
-              <option selected>How many people 18 - 64 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- *************   Mayores de 65  ****** -->
-
-      <div class="row mt-2">
-        <p class="text-center mt-4">Between <strong>+65 </strong>years</p>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Female</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="FemaleOver65"
-            >
-              <option selected>How many people +65 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="input-group py-2">
-            <label class="input-group-text" for="inputGroupSelect01"
-              >Male</label
-            >
-            <select
-              class="form-select"
-              id="inputGroupSelect01"
-              formControlName="MaleOver65"
-            >
-              <option selected>How many people +65 years</option>
-              <option value="0">0 person</option>
-              <option value="1">1 person</option>
-              <option value="2">2 people</option>
-              <option value="3">3 people</option>
-              <option value="4">4 people</option>
-              <option value="5">5 people</option>
-              <option value="6">6 people</option>
-            </select>
-          </div>
-        </div>
+      <div class="d-flex justify-content-center mt-2">
+        <button (click)="next()" type="button" class="btn btn-warning px-2">
+          Next
+        </button>
       </div>
     </div>
+    <ng-template #partTwo>
+      <div>
+        <p class="text-center">How many people live with you?</p>
+        <p class="text-center">Counting the respondent</p>
 
-    <div *ngIf="partForm == 1" class="d-flex justify-content-center mt-4">
-      <button (click)="next()" type="button" class="btn btn-warning px-2">
-        Next
-      </button>
-    </div>
+        <!-- *************   ENTRE 0 A 4 ****** -->
 
-    <div *ngIf="partForm == 2" class="d-flex justify-content-center mt-4">
-      <button (click)="back()" type="button" class="btn btn-secondary mx-2">
-        Back
-      </button>
-      <button
-        (click)="Submit()"
-        type="submit"
-        class="btn btn-success mx-2"
-        [disabled]="activeSubmit"
-      >
-        Submit
-      </button>
-    </div>
+        <div class="row mt-2">
+          <p class="text-center mt-4">Between <strong>0 to 4 </strong>years</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Female</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="FemaleBetween0_4"
+              >
+                <option selected>How many people 0 - 4 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Male</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="MaleBetween0_4"
+              >
+                <option selected>How many people 0 - 4 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- *************   ENTRE 5 A 17 ****** -->
+
+        <div class="row mt-2">
+          <p class="text-center mt-4">Between <strong>5 to 17 </strong>years</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Female</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="FemaleBetween5_17"
+              >
+                <option selected>How many people 5 - 17 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Male</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="MaleBetween5_17"
+              >
+                <option selected>How many people 5 - 17 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- *************   ENTRE 18 A 64 ****** -->
+
+        <div class="row mt-2">
+          <p class="text-center mt-4">
+            Between <strong>18 to 64 </strong>years
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Female</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="FemaleBetween18_64"
+              >
+                <option selected>How many people 18 - 64 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Male</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="MaleBetween18_64"
+              >
+                <option selected>How many people 18 - 64 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- *************   Mayores de 65  ****** -->
+
+        <div class="row mt-2">
+          <p class="text-center mt-4">Between <strong>+65 </strong>years</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Female</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="FemaleOver65"
+              >
+                <option selected>How many people +65 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="input-group py-2">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Male</label
+              >
+              <select
+                class="form-select"
+                id="inputGroupSelect01"
+                formControlName="MaleOver65"
+              >
+                <option selected>How many people +65 years</option>
+                <option value="0">0 person</option>
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+          <button (click)="back()" type="button" class="btn btn-secondary mx-2">
+            Back
+          </button>
+          <button
+            (click)="Submit()"
+            type="submit"
+            class="btn btn-success mx-2"
+            [disabled]="activeSubmit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <div *ngIf="partForm == 1" class="d-flex justify-content-center mt-4"></div>
   </form>
 </div>
