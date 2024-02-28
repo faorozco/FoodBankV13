@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterNewBeneficiaryComponent } from './pages/register-new-beneficiary/register-new-beneficiary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
@@ -24,6 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import { CardButtonComponent } from './components/card-button/card-button.component';
 import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-beneficiary.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-benefici
     StatisticsComponent,
     CardButtonComponent,
     ListBeneficiaryComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,9 @@ import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-benefici
     MatSelectModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
