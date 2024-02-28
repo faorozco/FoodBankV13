@@ -3,5 +3,5 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999; /* Valor alto para superponerse por encima de otros elementos */
+    z-index: 9; /* Valor alto para superponerse por encima de otros elementos */
 }
