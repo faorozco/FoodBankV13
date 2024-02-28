@@ -1,6 +1,19 @@
 <app-alert [alertText]="alertText" [alertType]="alertType"></app-alert>
 
-<div class="container-fluid p-4">
+<app-modal
+  [modalTitle]="modalTitle"
+  [bodyText]="bodyText"
+  [btnCloseText]="btnCloseTextModal"
+  [btnSaveText]="btnSaveTextModal"
+  [colorBtnSave]="colorBtnSave"
+  (SaveChangesEvent)="saveChangesModal()"
+ 
+>
+</app-modal>
+
+
+
+<div class="container-update p-4">
   <app-title [title]="title"></app-title>
   <app-form
     [formGroup]="formSheet"
@@ -10,4 +23,15 @@
     typeBirthDate="text"
     [activeSubmit]="formSheet.invalid"
   ></app-form>
+</div>
+
+<div class="container-delete d-flex justify-content-end">
+  <button
+    (click)="deleteBeneficiaryModal()"
+    mat-fab
+    color="warn"
+    aria-label="Example icon button with a home icon"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>

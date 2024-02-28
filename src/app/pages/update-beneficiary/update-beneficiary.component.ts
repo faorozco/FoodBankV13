@@ -16,6 +16,12 @@ export class UpdateBeneficiaryComponent implements OnInit {
   partForm: number = 1;
   activeSubmit = true;
   beneficiary: any = undefined;
+  modalTitle: string = 'Modal Title';
+  bodyText: string = 'Aqui se coloca el texto';
+  btnSaveTextModal: 'delete' | 'volunteer_activism' = 'delete';
+  btnCloseTextModal: string = 'Close';
+  colorBtnSave: 'success' | 'danger' = 'danger';
+  
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -78,5 +84,42 @@ export class UpdateBeneficiaryComponent implements OnInit {
       });
     
     
+  }
+
+
+  deleteBeneficiary() {
+
+  }
+
+
+
+  
+  deleteBeneficiaryModal() {
+    this.modalTitle = 'Delete Beneficiary';
+    this.bodyText = `Are you sure you want to delete ${this.beneficiary.Name} ${this.beneficiary.LastName}?`;
+    this.btnSaveTextModal = 'delete';
+    this.btnCloseTextModal = 'Cancel';
+    this.colorBtnSave = 'danger';
+  }
+
+  saveChangesModal(){
+    return this.sheetConection.deleteBeneficiary(this.beneficiary.index).subscribe({
+      next: (res) => {
+        this.alertType = 'success';
+        this.alertText = 'Beneficiary deleted successfully';
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2000);
+      },
+      error: (err) => {
+        this.alertType = 'danger';
+        this.alertText = 'An error occurred';
+        setTimeout(() => {
+          this.alertType = 'none';
+          this.alertText = '';
+        }, 2000);
+      },
+    });
+
   }
 }

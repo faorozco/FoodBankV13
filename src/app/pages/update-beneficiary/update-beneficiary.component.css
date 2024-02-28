@@ -1,0 +1,16 @@
+.container-update{
+    margin-top: 80px;
+}
+
+
+.container-delete {
+    padding: 20px;
+}
+
+.container-delete .boton-interno {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    
+}
