@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'new-beneficiary', component: RegisterNewBeneficiaryComponent},
   {path: 'update-beneficiary', component: UpdateBeneficiaryComponent},
-  {path: 'deliveries', component: DeliveryComponent},
-  {path: 'deliveries/statistics', component: StatisticsComponent},
+  {path: 'fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb', component: DeliveryComponent},
+  {path: 'fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb/statistics', component: StatisticsComponent},
   {path: 'list-beneficiaries', component: ListBeneficiaryComponent}
 ];
 

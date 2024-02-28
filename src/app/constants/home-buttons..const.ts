@@ -20,11 +20,11 @@ export const HOME_BUTTONS = [
         pathImag: '../../../assets/imgs/list-beneficiary.jpg'
 
     },
-    {
-        text: 'list and manage deliveries of the  Maria Luisa de Moreno International Foundation',
-        router: './deliveries',
-        button: 'List of deliveries',
-        pathImag: '../../../assets/imgs/list-deliveries.jpg'
+    // {
+    //     text: 'list and manage deliveries of the  Maria Luisa de Moreno International Foundation',
+    //     router: './deliveries',
+    //     button: 'List of deliveries',
+    //     pathImag: '../../../assets/imgs/list-deliveries.jpg'
 
-    }
+    // }
 ]

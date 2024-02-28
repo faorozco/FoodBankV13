@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardButtonComponent implements OnInit {
   @Input() textCardButton = 'Create a new beneficiary of the Foundation Maria Luisa de Moreno International'
-  @Input() routerCardButton = './new-beneficiary'
+  @Input() routerCardButton!: string;
   @Input() buttonInCard = 'New beneficiary'
   @Input() pathImag = '../../../assets/imgs/newBeneficiary.jpg'
 

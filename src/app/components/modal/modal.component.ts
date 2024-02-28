@@ -8,7 +8,7 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 export class ModalComponent implements OnInit {
 @Input() modalTitle: string = 'Modal Title';
 @Input() bodyText: string = 'Body Text';
-@Input() btnSaveText: 'delete' | 'volunteer_activism' = 'delete';
+@Input() btnSaveText: 'delete' | 'volunteer_activism' | 'done_all' = 'delete';
 @Input() colorBtnSave: 'success' | 'danger' = 'success';
 @Input() btnCloseText: string = 'Close';
 @Input() deleteBtnModal: boolean = false;

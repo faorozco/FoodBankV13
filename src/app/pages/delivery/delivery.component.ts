@@ -108,6 +108,6 @@ export class DeliveryComponent implements OnInit {
   }
 
   generateResult(data: any) {
-    this.router.navigate(['./deliveries/statistics'], {state: { data }})
+    this.router.navigate(['./fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb/statistics'], {state: { data }})
   }
 }
