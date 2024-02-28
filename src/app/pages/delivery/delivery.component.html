@@ -48,8 +48,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Delivery date</th>
-          <th scope="col">Delivery hour</th>
+          <th scope="col">Date</th>
           <th class="anchor" scope="col-4">Document</th>
           <th class="anchor" scope="col-4">Name</th>
           <th class="anchor" scope="col-4">Lastname</th>
@@ -62,7 +61,6 @@
         <tr *ngFor="let beneficiary of dataTable">
           <td>{{ beneficiary.numberList }}</td>
           <td>{{ beneficiary.DeliveryDate }}</td>
-          <td>{{ beneficiary.DeliveryHour }}</td>
           <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
           <td class="anchor">{{ beneficiary.Name }}</td>
           <td class="anchor">{{ beneficiary.LastName }}</td>
