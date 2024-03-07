@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
+import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
@@ -85,24 +87,22 @@ export class DeliveryComponent implements OnInit {
   deleteDelivery(delivery: any) {
     return this.sheetConectionService.deleteDelivery(delivery.index).subscribe({
       next: () => {
-        this.alertText = 'The beneficiary was successfully removed';
-        this.alertType = 'warning';
+        this.alertText = MSM_ALERTS.removedBeneficiary;
+        this.alertType = 'success';
         this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
-
         this.getAllDelivery();
         setTimeout(() => {
           this.alertText = '';
           this.alertType = 'none';
-        }, 5000);
+        }, TIME_ALERTS.alertSuccess);
       },
       error: () => {
-        this.alertText = 'Try again later';
-        this.bodyText = 'Try again later';
+        this.alertText = MSM_ALERTS.tryAgainLater;
         this.alertType = 'danger';
         setTimeout(() => {
           this.alertText = '';
           this.alertType = 'none';
-        }, 5000);
+        }, TIME_ALERTS.alertDanger);
       },
     });
   }
