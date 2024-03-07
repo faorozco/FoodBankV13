@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SheetConectionService } from 'src/app/services/sheet-conection.service';
+import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
 @Component({
   selector: 'app-register-new-beneficiary',

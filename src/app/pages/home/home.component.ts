@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   saveChangesModal(password: string) {
     if (password === '1234') {
-      this.router.navigate(['./fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb']);
+      this.router.navigate(['./administration']);
     } else {
       this.passwordIncorrect = true;
       setTimeout(() => {this.passwordIncorrect = false}, 3000);  

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
-import { SheetConectionService } from 'src/app/services/sheet-conection.service';
+import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
 @Component({
   selector: 'app-delivery',
@@ -84,7 +84,7 @@ export class DeliveryComponent implements OnInit {
 
   deleteDelivery(delivery: any) {
     return this.sheetConectionService.deleteDelivery(delivery.index).subscribe({
-      next: (res) => {
+      next: () => {
         this.alertText = 'The beneficiary was successfully removed';
         this.alertType = 'warning';
         this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
@@ -95,7 +95,7 @@ export class DeliveryComponent implements OnInit {
           this.alertType = 'none';
         }, 5000);
       },
-      error: (err) => {
+      error: () => {
         this.alertText = 'Try again later';
         this.bodyText = 'Try again later';
         this.alertType = 'danger';
@@ -108,6 +108,6 @@ export class DeliveryComponent implements OnInit {
   }
 
   generateResult(data: any) {
-    this.router.navigate(['./fiml-foodbank-jlskuvjnsh-casihgñwlksdufo-ñasdlfkajsasdf-aodifwwwwvlañb/statistics'], {state: { data }})
+    this.router.navigate(['./administration/statistics'], {state: { data }})
   }
 }
