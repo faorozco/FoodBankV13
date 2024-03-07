@@ -1,0 +1,9 @@
+
+<div class="container-home-admin">
+    <app-title [title]="'Adminitrators workspace'"></app-title>
+</div>
+
+<div class="cards-buttons d-flex justify-content-center p-4">
+    <app-card-button *ngFor="let card of cards" [textCardButton]="card.text" [routerCardButton]="card.router"
+    [buttonInCard]="card.button" [pathImag]="card.pathImag"></app-card-button>
+</div>

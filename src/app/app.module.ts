@@ -26,6 +26,9 @@ import { CardButtonComponent } from './components/card-button/card-button.compon
 import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-beneficiary.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { AdminListBeneficiariesComponent } from './pages/admin-list-beneficiaries/admin-list-beneficiaries.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
     CardButtonComponent,
     ListBeneficiaryComponent,
     SpinnerComponent,
+    HomeAdminComponent,
+    AdminListBeneficiariesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

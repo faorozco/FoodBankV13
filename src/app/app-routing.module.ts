@@ -6,14 +6,19 @@ import { UpdateBeneficiaryComponent } from './pages/update-beneficiary/update-be
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-beneficiary.component';
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'new-beneficiary', component: RegisterNewBeneficiaryComponent},
   {path: 'update-beneficiary', component: UpdateBeneficiaryComponent},
   {path: 'administration', component: DeliveryComponent},
   {path: 'administration/statistics', component: StatisticsComponent},
-  {path: 'list-beneficiaries', component: ListBeneficiaryComponent}
+  {path: 'list-beneficiaries', component: ListBeneficiaryComponent},
+  {path: 'home-admin', component: HomeAdminComponent},
 ];
 
 @NgModule({
