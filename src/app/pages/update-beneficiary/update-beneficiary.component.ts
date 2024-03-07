@@ -93,7 +93,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
   }
 
   saveChangesModal() {
-    return this.sheetConection.deleteBeneficiary(this.beneficiary.index).subscribe({
+    return this.sheetConection.deleteBeneficiary(this.beneficiary.DocumentNumber).subscribe({
       next: () => {
         this.alertType = 'success';
         this.alertText = 'Beneficiary deleted successfully';
