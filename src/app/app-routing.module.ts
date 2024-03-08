@@ -12,7 +12,6 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'new-beneficiary', component: RegisterNewBeneficiaryComponent},
   {path: 'update-beneficiary', component: UpdateBeneficiaryComponent},
   {path: 'administration', component: DeliveryComponent},

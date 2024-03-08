@@ -47,7 +47,10 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!localStorage.getItem('user'))
+    this.router.navigate(['./']);
+  }
 
   next(): void {
     this.partForm = 2;
