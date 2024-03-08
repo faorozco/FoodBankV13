@@ -156,8 +156,9 @@
     </div>
     <ng-template #partTwo>
       <div>
-        <p class="text-center">How many people live with you?</p>
+        <p class="text-center">Total number of people living in your home</p>
         <p class="text-center">Counting the respondent</p>
+        <p class="text-center total-people">{{total}}</p>
 
         <!-- *************   ENTRE 0 A 4 ****** -->
 
@@ -380,7 +381,5 @@
         </div>
       </div>
     </ng-template>
-
-    <div *ngIf="partForm == 1" class="d-flex justify-content-center mt-4"></div>
   </form>
 </div>

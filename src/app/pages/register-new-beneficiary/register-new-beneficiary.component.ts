@@ -15,6 +15,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   activeSubmit = true;
   title: string = 'New beneficiary';
+  totalPeople!: number
 
   constructor(
     private sheetConection: SheetConectionService,
