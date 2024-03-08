@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -9,18 +9,45 @@ import { FormGroup } from '@angular/forms';
 export class FormComponent implements OnInit {
   @Input() partForm: number = 1;
   @Input() total: number = 0;
-
+  @Input() disableButton: boolean = false;
   @Input() typeBirthDate: 'text' | 'date' = 'date';
   @Input() formGroup!: FormGroup;
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
+  alertText = '';
+  alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
 
-  constructor() { }
+
+  constructor() {
+
+   }
 
   ngOnInit(): void {
   }
 
   next(): void {
-    this.partForm = 2;
+    if(
+      this.formGroup.value.DocumentType == '' ||
+      this.formGroup.value.DocumentNumber == '' ||
+      this.formGroup.value.Name == '' ||
+      this.formGroup.value.LastName == '' ||
+      this.formGroup.value.BirthDate == '' ||
+      this.formGroup.value.Sex == '' ||
+      this.formGroup.value.City == '' ||
+      this.formGroup.value.Address == '' ||
+      this.formGroup.value.PhoneNumber == ''
+
+    ){
+      this.alertText = 'Please fill all the fields';
+      this.alertType = 'warning';
+      setTimeout(() => {
+        this.alertText = '';
+        this.alertType = 'none';
+      }, 2000);
+    } else {
+
+      this.partForm = 2;
+    }
+    console.log(this.formGroup.value)
   }
 
   back(): void {

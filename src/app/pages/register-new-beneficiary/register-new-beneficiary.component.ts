@@ -15,6 +15,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   title: string = 'New beneficiary';
   totalPeople!: number;
+  disableButtonSubmit!: boolean;
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -23,7 +24,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
       DocumentType: new FormControl('', Validators.required),
-      DocumentNumber: new FormControl('', [Validators.required]),
+      DocumentNumber: new FormControl('', Validators.required),
       Name: new FormControl('', Validators.required),
       LastName: new FormControl('', Validators.required),
       BirthDate: new FormControl('', Validators.required),
@@ -79,6 +80,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.formSheet.invalid) {
+      this.disableButtonSubmit = true;
       const body = {
         ...this.formSheet.value,
         RegistrationDate: this.sheetConection
