@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { USERS } from 'src/app/constants/users/admin-users.const';
 import { UserModel } from 'src/app/models/user.model';
 
@@ -15,12 +16,13 @@ export class LoginComponent implements OnInit {
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-
-
-
+    
+    if(localStorage.getItem('user')) {
+      this.router.navigate(['/home']);
+    }
     this.formLogin = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -30,10 +32,9 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     this.validatedUser = this.filterUserandPassword(this.users, this.formLogin.value.username, this.formLogin.value.password)
-
-
     if (this.validatedUser.length > 0) {
-      localStorage.setItem("user", JSON.stringify(this.validatedUser[0]))
+      localStorage.setItem("user", JSON.stringify(this.validatedUser))
+      location.reload();
     }
     else {
       this.alertText = 'Error, the username or password is incorrect';

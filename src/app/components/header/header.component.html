@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-dark bg-primary" *ngIf="enableHeader">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="./home">
       <img
@@ -38,6 +38,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" routerLink="./deliveries">{{ optionThree }}</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-secondary" (click)="logout()">logout</button>
         </li>
       </ul>
     </div>

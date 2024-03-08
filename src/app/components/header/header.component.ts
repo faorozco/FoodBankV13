@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OPTIONS } from 'src/app/constants/option.const';
 
 @Component({
@@ -12,10 +13,17 @@ export class HeaderComponent implements OnInit {
   optionOne = OPTIONS.beneficiaryList;
   optionTwo = OPTIONS.newBeneficiary;
   optionThree = OPTIONS.deliveryList;
+  enableHeader: any = localStorage.getItem('user')?.length
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['./']);
+    this.enableHeader = false;
   }
 
 }
