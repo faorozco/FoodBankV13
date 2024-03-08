@@ -30,7 +30,7 @@ export const USERS: UserModel[] = [
         rol: 'DELIVER'
     },
     {
-        id: 3,
+        id: 4,
         name: 'Maria Camila',
         lastName: 'Mina',
         functionalities: ROL_ADMIN,
@@ -39,7 +39,7 @@ export const USERS: UserModel[] = [
         rol: 'DELIVER'
     },
     {
-        id: 4,
+        id: 5,
         name: 'Cristian Leandro',
         lastName: 'Aristizabal Giraldo',
         functionalities: ROL_DELIVER,
@@ -48,7 +48,7 @@ export const USERS: UserModel[] = [
         rol: 'COORDINATOR'
     },
     {
-        id: 5,
+        id: 6,
         name: 'Contingencia',
         lastName: 'PLAN B',
         functionalities: ROL_DELIVER,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { USERS } from 'src/app/constants/users/admin-users.const';
+import { USERS } from 'src/app/constants/users/users.const';
 import { UserModel } from 'src/app/models/user.model';
 
 @Component({
@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
   submitLogin() {
     this.validatedUser = this.filterUserandPassword(this.users, this.formLogin.value.username, this.formLogin.value.password)
     if (this.validatedUser.length > 0) {
-      localStorage.setItem("user", JSON.stringify(this.validatedUser))
+      localStorage.setItem("name", JSON.stringify(this.validatedUser[0].name))
+      localStorage.setItem("user", JSON.stringify(this.validatedUser[0]))
       location.reload();
     }
     else {

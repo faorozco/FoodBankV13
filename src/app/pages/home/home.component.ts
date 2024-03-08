@@ -10,6 +10,7 @@ import { HOME_BUTTONS } from 'src/app/constants/home-buttons..const';
 export class HomeComponent implements OnInit {
   cards = HOME_BUTTONS;
   passwordIncorrect: boolean = false;
+  title: string = ''
 
   constructor(private router: Router) {}
 
@@ -17,5 +18,10 @@ export class HomeComponent implements OnInit {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
     }
+    this.title = `¡Hi, 👋 ${localStorage.getItem("name") ? JSON.parse(localStorage.getItem("name")!) : ""}!`
+  }
+
+  getName () {
+    return ;
   }
 }
