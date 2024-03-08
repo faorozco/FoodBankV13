@@ -15,7 +15,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   activeSubmit = true;
   title: string = 'New beneficiary';
-  totalPeople!: number
+  totalPeople!: number;
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -52,6 +52,22 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
     }
+
+    this.formSheet.valueChanges.subscribe((changes) => {
+      this.sumTotalPeople();
+    });
+  }
+
+  sumTotalPeople() {
+    this.totalPeople =
+      Number(this.formSheet.value.FemaleBetween0_4) +
+      Number(this.formSheet.value.MaleBetween0_4) +
+      Number(this.formSheet.value.FemaleBetween5_17) +
+      Number(this.formSheet.value.MaleBetween5_17) +
+      Number(this.formSheet.value.FemaleBetween18_64) +
+      Number(this.formSheet.value.MaleBetween18_64) +
+      Number(this.formSheet.value.FemaleOver65) +
+      Number(this.formSheet.value.MaleOver65);
   }
 
   next(): void {
