@@ -15,7 +15,6 @@ export class UpdateBeneficiaryComponent implements OnInit {
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   alertText = '';
   partForm: number = 1;
-  activeSubmit = true;
   beneficiary: any = undefined;
   modalTitle: string = 'Modal Title';
   bodyText: string = 'Aqui se coloca el texto';
@@ -66,7 +65,9 @@ export class UpdateBeneficiaryComponent implements OnInit {
   }
 
   onSubmit() {
-    return this.sheetConection
+
+    if (!this.formSheet.invalid) {
+      this.sheetConection
       .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
       .subscribe({
         next: () => {
@@ -85,33 +86,18 @@ export class UpdateBeneficiaryComponent implements OnInit {
           }, 2000);
         },
       });
+    } else {
+      this.alertType = 'warning';
+      this.alertText = 'Please fill all the fields';
+      setTimeout(() => {
+        this.alertType = 'none';
+        this.alertText = '';
+      }, 2000);
+    }
+
+
+
   }
 
-  // deleteBeneficiaryModal() {
-  //   this.modalTitle = 'Delete Beneficiary';
-  //   this.bodyText = `Are you sure you want to delete ${this.beneficiary.Name} ${this.beneficiary.LastName}?`;
-  //   this.btnSaveTextModal = 'delete';
-  //   this.btnCloseTextModal = 'Cancel';
-  //   this.colorBtnSave = 'danger';
-  // }
 
-  // saveChangesModal() {
-  //   return this.sheetConection.deleteBeneficiary(this.beneficiary.DocumentNumber).subscribe({
-  //     next: () => {
-  //       this.alertType = 'success';
-  //       this.alertText = 'Beneficiary deleted successfully';
-  //       setTimeout(() => {
-  //         this.router.navigate(['/']);
-  //       }, 2000);
-  //     },
-  //     error: () => {
-  //       this.alertType = 'danger';
-  //       this.alertText = 'An error occurred';
-  //       setTimeout(() => {
-  //         this.alertType = 'none';
-  //         this.alertText = '';
-  //       }, 2000);
-  //     },
-  //   });
-  // }
 }

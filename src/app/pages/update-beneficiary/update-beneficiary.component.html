@@ -5,10 +5,8 @@
   <app-form
     [formGroup]="formSheet"
     [partForm]="partForm"
-    [activeSubmit]="activeSubmit"
     (onSubmit)="onSubmit()"
     typeBirthDate="text"
-    [activeSubmit]="formSheet.invalid"
   ></app-form>
 
   <!-- <button

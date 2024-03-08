@@ -61,7 +61,7 @@
           <div class="input-group">
             <span class="input-group-text">Birth date</span>
             <input
-              [type]="typeBirthDate"
+              [type]="'date'"
               aria-label="birthdate"
               class="form-control"
               formControlName="BirthDate"
@@ -71,7 +71,7 @@
 
         <div class="col-xs-12 col-sm-6 py-2">
           <div class="input-group">
-            <label class="input-group-text" for="inputGroupSelect01">Sex</label>
+            <label class="input-group-text" for="inputGroupSelect01">Gender</label>
             <select
               class="form-select"
               id="inputGroupSelect01"
@@ -157,7 +157,9 @@
     <ng-template #partTwo>
       <div>
         <p class="text-center">Total number of people living in your home</p>
-        <p class="text-center">Counting the respondent: <span class="total-people">{{total}}</span></p>
+        <p class="text-center">
+          Counting the respondent: <span class="total-people">{{ total }}</span>
+        </p>
         <p class="text-center total-people"></p>
 
         <!-- *************   ENTRE 0 A 4 ****** -->
@@ -374,7 +376,7 @@
             (click)="Submit()"
             type="submit"
             class="btn btn-success mx-2"
-            [disabled]="activeSubmit"
+    
           >
             Submit
           </button>

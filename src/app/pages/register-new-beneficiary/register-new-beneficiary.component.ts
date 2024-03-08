@@ -13,7 +13,6 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   formSheet!: FormGroup;
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
-  activeSubmit = true;
   title: string = 'New beneficiary';
   totalPeople!: number;
 
@@ -79,31 +78,39 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const body = {
-      ...this.formSheet.value,
-      RegistrationDate: this.sheetConection
-        .getCurrentDateTime()
-        .toLocaleString(),
-    };
-    this.sheetConection.newBeneficiary(body).subscribe({
-      next: () => {
-        this.alertText = 'the beneficiary has been created correctly';
-        this.alertType = 'success';
-        this.activeSubmit = false;
-        setTimeout(() => {
-          this.alertText = '';
-          this.alertType = 'none';
-          this.router.navigate(['/']);
-        }, 3000);
-      },
-      error: () => {
-        this.alertText = 'Try again later';
-        this.alertType = 'danger';
-        setTimeout(() => {
-          this.alertText = '';
-          this.alertType = 'none';
-        }, 5000);
-      },
-    });
+    if (!this.formSheet.invalid) {
+      const body = {
+        ...this.formSheet.value,
+        RegistrationDate: this.sheetConection
+          .getCurrentDateTime()
+          .toLocaleString(),
+      };
+      this.sheetConection.newBeneficiary(body).subscribe({
+        next: () => {
+          this.alertText = 'the beneficiary has been created correctly';
+          this.alertType = 'success';
+          setTimeout(() => {
+            this.alertText = '';
+            this.alertType = 'none';
+            this.router.navigate(['/']);
+          }, 3000);
+        },
+        error: () => {
+          this.alertText = 'Try again later';
+          this.alertType = 'danger';
+          setTimeout(() => {
+            this.alertText = '';
+            this.alertType = 'none';
+          }, 5000);
+        },
+      });
+    } else {
+      this.alertText = 'Please fill all the fields';
+      this.alertType = 'warning';
+      setTimeout(() => {
+        this.alertText = '';
+        this.alertType = 'none';
+      }, 5000);
+    }
   }
 }

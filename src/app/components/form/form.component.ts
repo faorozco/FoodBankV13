@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class FormComponent implements OnInit {
   @Input() partForm: number = 1;
   @Input() total: number = 0;
-  @Input() activeSubmit: boolean = false;
+
   @Input() typeBirthDate: 'text' | 'date' = 'date';
   @Input() formGroup!: FormGroup;
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
