@@ -30,6 +30,15 @@ export const USERS: UserModel[] = [
         rol: 'DELIVER'
     },
     {
+        id: 3,
+        name: 'Maria Camila',
+        lastName: 'Mina',
+        functionalities: ROL_ADMIN,
+        user: 'marmina',
+        password: 'h9L8k',
+        rol: 'DELIVER'
+    },
+    {
         id: 4,
         name: 'Cristian Leandro',
         lastName: 'Aristizabal Giraldo',

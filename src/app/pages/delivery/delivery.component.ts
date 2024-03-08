@@ -28,6 +28,9 @@ export class DeliveryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['./']);
+    }
     this.getAllDelivery();
   }
 
@@ -108,6 +111,6 @@ export class DeliveryComponent implements OnInit {
   }
 
   generateResult(data: any) {
-    this.router.navigate(['./administration/statistics'], {state: { data }})
+    this.router.navigate(['./administration/statistics'], { state: { data } });
   }
 }

@@ -9,6 +9,8 @@ export const ROL_ADMIN = [
     FUNCIONALITIES.readDelivery,
     FUNCIONALITIES.deleteDelivery,
 ]
+
+
 export const ROL_DELIVER = [
     FUNCIONALITIES.createBeneficiary,
     FUNCIONALITIES.readBeneficiaries,

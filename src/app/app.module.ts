@@ -27,7 +27,6 @@ import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-benefici
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
-import { AdminListBeneficiariesComponent } from './pages/admin-list-beneficiaries/admin-list-beneficiaries.component';
 import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
@@ -47,7 +46,6 @@ import { LoginComponent } from './pages/login/login.component';
     ListBeneficiaryComponent,
     SpinnerComponent,
     HomeAdminComponent,
-    AdminListBeneficiariesComponent,
     LoginComponent,
   ],
   imports: [

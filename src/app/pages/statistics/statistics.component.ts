@@ -27,10 +27,12 @@ export class StatisticsComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['./']);
+    }
     this.dataDelivery = history.state.data;
-
     if (this.dataDelivery === undefined) {
-      this.router.navigate(['./deliveries']);
+      this.router.navigate(['./home']);
     } else {
       this.allDates = this.dataDelivery
         .map((delivery: any) => delivery.DeliveryDate)

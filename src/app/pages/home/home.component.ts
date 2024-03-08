@@ -14,18 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    if (!localStorage.getItem('user'))
-    this.router.navigate(['./']);
-  }
-
-  modalSegurity() {}
-
-  saveChangesModal(password: string) {
-    if (password === '1234') {
-      this.router.navigate(['./administration']);
-    } else {
-      this.passwordIncorrect = true;
-      setTimeout(() => {this.passwordIncorrect = false}, 3000);  
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['./']);
     }
   }
 }
