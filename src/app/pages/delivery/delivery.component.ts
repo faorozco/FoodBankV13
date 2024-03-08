@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
 import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
+import { UserModel } from 'src/app/models/user.model';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
 @Component({
@@ -21,6 +22,8 @@ export class DeliveryComponent implements OnInit {
   colorBtnSave: 'success' | 'danger' = 'success';
   btnSaveTextModal: 'delete' | 'volunteer_activism' = 'volunteer_activism';
   beneficiary!: BeneficiaryModel;
+  rol: boolean = false;
+  user: UserModel = JSON.parse(localStorage.getItem('user')!);
 
   constructor(
     private sheetConectionService: SheetConectionService,
@@ -30,6 +33,9 @@ export class DeliveryComponent implements OnInit {
   ngOnInit(): void {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
+    }
+    if (this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {
+      this.rol = true;
     }
     this.getAllDelivery();
   }

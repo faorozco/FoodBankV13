@@ -11,11 +11,8 @@
 
 <div class="container-delivery">
   <app-title [title]="'Deliveries'"></app-title>
-  <p class="text-center">
-    Total registros: {{ this.dataTable.length }} registros
-  </p>
 
-  <div class="container-fluid d-flex justify-content-center">
+  <div class="container-fluid d-flex justify-content-center" *ngIf="rol">
     <button
       *ngIf="temporalData.length !== 0"
       (click)="generateResult(temporalData)"
@@ -54,7 +51,7 @@
           <th class="anchor" scope="col-4">Lastname</th>
           <th scope="col">Nationality</th>
 
-          <th scope="col">Delete</th>
+          <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -66,7 +63,7 @@
           <td class="anchor">{{ beneficiary.LastName }}</td>
           <td>{{ beneficiary.Nationality }}</td>
 
-          <td>
+          <td *ngIf="rol">
             <span
               class="material-symbols-outlined cursor py-2"
               data-bs-toggle="modal"
