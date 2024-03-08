@@ -1,26 +1,28 @@
-export const USERS = [
+import { UserModel } from "src/app/models/user.model";
+
+export const USERS: UserModel[] = [
     {
-        id: '1',
+        id: 1,
         name: 'Juan Miguel',
         lastName: 'Piedrahaita',
         rol: 'DEV',
         user: 'jmpiedra',
-        password: 'viz10'
+        password: '123'
     },
     {
-        id: '2',
+        id: 2,
         name: 'Juliana',
         lastName: 'Montoya',
         rol: 'ADMIN',
-        user: 'jmpiedra',
+        user: 'jmontoya',
         password: 'viz10'
     },
     {
-        id: '3',
+        id: 3,
         name: 'Pepito',
         lastName: 'Perez',
         rol: 'DELIVER',
-        user: 'jmpiedra',
+        user: 'pepito',
         password: 'viz10'
     },
 ]
