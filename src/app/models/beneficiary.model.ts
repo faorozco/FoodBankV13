@@ -26,4 +26,5 @@ export interface BeneficiaryModel {
     check?: boolean;
     DeliveryHour?: string;
     numberList?: string | number;
+    totalPeople?: number
 }

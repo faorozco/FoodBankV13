@@ -39,6 +39,15 @@ export class ListBeneficiaryComponent implements OnInit {
             index: res.indexOf(obj),
             nameUpperCase: obj.Name.toUpperCase(),
             LastUpperCase: obj.LastName.toUpperCase(),
+            totalPeople:
+              Number(obj.FemaleBetween0_4) +
+              Number(obj.MaleBetween0_4) +
+              Number(obj.FemaleBetween5_17) +
+              Number(obj.MaleBetween5_17) +
+              Number(obj.FemaleBetween18_64) +
+              Number(obj.MaleBetween18_64) +
+              Number(obj.FemaleOver65) +
+              Number(obj.MaleOver65),
             check: false,
           };
         });
@@ -49,6 +58,7 @@ export class ListBeneficiaryComponent implements OnInit {
       },
     });
   }
+
 
   inputText(text: any) {
     this.dataTable = this.filterArray(this.temporalData, text);
@@ -68,14 +78,14 @@ export class ListBeneficiaryComponent implements OnInit {
     this.router.navigate(['/update-beneficiary'], { state: { beneficiary } });
   }
 
-  // deleteBeneficiaryModal(data: BeneficiaryModel) {
-  //   this.beneficiary = data;
-  //   this.modalTitle = 'Delete Beneficiary';
-  //   this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
-  //   this.btnSaveTextModal = 'delete';
-  //   this.btnCloseTextModal = 'Cancel';
-  //   this.colorBtnSave = 'danger';
-  // }
+  deleteBeneficiaryModal(data: BeneficiaryModel) {
+    this.beneficiary = data;
+    this.modalTitle = 'Delete Beneficiary';
+    this.bodyText = `Are you sure you want to delete ${data.Name} ${data.LastName}?`;
+    this.btnSaveTextModal = 'delete';
+    this.btnCloseTextModal = 'Cancel';
+    this.colorBtnSave = 'danger';
+  }
 
   deliveryBeneficiaryModal(data: any) {
     this.colorBtnSave = 'success';
@@ -89,7 +99,7 @@ export class ListBeneficiaryComponent implements OnInit {
   saveChangesModal(): void {
     if (this.btnSaveTextModal === 'volunteer_activism') {
       this.delivery(this.beneficiary);
-    } 
+    }
   }
 
   delivery(donate: BeneficiaryModel) {
