@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
     }
-    this.title = `¡Hi, 👋 ${localStorage.getItem("name") ? JSON.parse(localStorage.getItem("name")!) : ""}!`
+    this.title = `¡Hi, 👋 ${JSON.parse(localStorage.getItem("name")!)}!`
   }
 
   getName () {

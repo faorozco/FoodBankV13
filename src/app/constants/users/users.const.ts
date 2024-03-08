@@ -52,7 +52,7 @@ export const USERS: UserModel[] = [
         name: 'Contingencia',
         lastName: 'PLAN B',
         functionalities: ROL_DELIVER,
-        user: 'claristizabal',
+        user: 'contingencia',
         password: 'v8B12',
         rol: 'COORDINATOR'
     },

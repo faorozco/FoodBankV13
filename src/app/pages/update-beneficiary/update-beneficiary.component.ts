@@ -29,6 +29,9 @@ export class UpdateBeneficiaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['./']);
+    }
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
       DocumentType: new FormControl('', Validators.required),
@@ -84,31 +87,31 @@ export class UpdateBeneficiaryComponent implements OnInit {
       });
   }
 
-  deleteBeneficiaryModal() {
-    this.modalTitle = 'Delete Beneficiary';
-    this.bodyText = `Are you sure you want to delete ${this.beneficiary.Name} ${this.beneficiary.LastName}?`;
-    this.btnSaveTextModal = 'delete';
-    this.btnCloseTextModal = 'Cancel';
-    this.colorBtnSave = 'danger';
-  }
+  // deleteBeneficiaryModal() {
+  //   this.modalTitle = 'Delete Beneficiary';
+  //   this.bodyText = `Are you sure you want to delete ${this.beneficiary.Name} ${this.beneficiary.LastName}?`;
+  //   this.btnSaveTextModal = 'delete';
+  //   this.btnCloseTextModal = 'Cancel';
+  //   this.colorBtnSave = 'danger';
+  // }
 
-  saveChangesModal() {
-    return this.sheetConection.deleteBeneficiary(this.beneficiary.DocumentNumber).subscribe({
-      next: () => {
-        this.alertType = 'success';
-        this.alertText = 'Beneficiary deleted successfully';
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 2000);
-      },
-      error: () => {
-        this.alertType = 'danger';
-        this.alertText = 'An error occurred';
-        setTimeout(() => {
-          this.alertType = 'none';
-          this.alertText = '';
-        }, 2000);
-      },
-    });
-  }
+  // saveChangesModal() {
+  //   return this.sheetConection.deleteBeneficiary(this.beneficiary.DocumentNumber).subscribe({
+  //     next: () => {
+  //       this.alertType = 'success';
+  //       this.alertText = 'Beneficiary deleted successfully';
+  //       setTimeout(() => {
+  //         this.router.navigate(['/']);
+  //       }, 2000);
+  //     },
+  //     error: () => {
+  //       this.alertType = 'danger';
+  //       this.alertText = 'An error occurred';
+  //       setTimeout(() => {
+  //         this.alertType = 'none';
+  //         this.alertText = '';
+  //       }, 2000);
+  //     },
+  //   });
+  // }
 }

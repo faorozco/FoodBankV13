@@ -1,14 +1,3 @@
 .container-update{
     margin-top: 80px;
 }
-
-
-.container-delete {
-    padding: 20px;
-}
-
-.btn-delete {
-    position: fixed;
-    z-index: 9999;
-    background-color: red;
-}

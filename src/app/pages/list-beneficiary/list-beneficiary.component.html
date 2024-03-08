@@ -40,7 +40,7 @@
           <th class="anchor" scope="col-4">Lastname</th>
           <th class="anchor" scope="col-4">People</th>
           <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
+          <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -86,7 +86,7 @@
               edit
             </span>
           </td>
-          <td>
+          <td *ngIf="rol">
             <span
               class="material-symbols-outlined cursor py-2"
               data-bs-toggle="modal"
