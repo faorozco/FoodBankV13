@@ -21,6 +21,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
   btnCloseTextModal: string = 'Close';
   btnSaveTextModal: 'delete' = 'delete';
   colorBtnSave: 'success' | 'danger' = 'danger';
+  totalPeople!: number;
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -62,30 +63,45 @@ export class UpdateBeneficiaryComponent implements OnInit {
     if (this.beneficiary === undefined) {
       this.router.navigate(['/']);
     }
+
+    this.formSheet.valueChanges.subscribe((changes) => {
+      this.sumTotalPeople();
+    });
+  }
+
+  sumTotalPeople() {
+    this.totalPeople =
+      Number(this.formSheet.value.FemaleBetween0_4) +
+      Number(this.formSheet.value.MaleBetween0_4) +
+      Number(this.formSheet.value.FemaleBetween5_17) +
+      Number(this.formSheet.value.MaleBetween5_17) +
+      Number(this.formSheet.value.FemaleBetween18_64) +
+      Number(this.formSheet.value.MaleBetween18_64) +
+      Number(this.formSheet.value.FemaleOver65) +
+      Number(this.formSheet.value.MaleOver65);
   }
 
   onSubmit() {
-
     if (!this.formSheet.invalid) {
       this.sheetConection
-      .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
-      .subscribe({
-        next: () => {
-          this.alertType = 'success';
-          this.alertText = 'Beneficiary updated successfully';
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 2000);
-        },
-        error: () => {
-          this.alertType = 'danger';
-          this.alertText = 'An error occurred';
-          setTimeout(() => {
-            this.alertType = 'none';
-            this.alertText = '';
-          }, 2000);
-        },
-      });
+        .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
+        .subscribe({
+          next: () => {
+            this.alertType = 'success';
+            this.alertText = 'Beneficiary updated successfully';
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
+          },
+          error: () => {
+            this.alertType = 'danger';
+            this.alertText = 'An error occurred';
+            setTimeout(() => {
+              this.alertType = 'none';
+              this.alertText = '';
+            }, 2000);
+          },
+        });
     } else {
       this.alertType = 'warning';
       this.alertText = 'Please fill all the fields';
@@ -94,10 +110,5 @@ export class UpdateBeneficiaryComponent implements OnInit {
         this.alertText = '';
       }, 2000);
     }
-
-
-
   }
-
-
 }
