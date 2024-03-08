@@ -6,7 +6,6 @@
   [btnSaveText]="btnSaveTextModal"
   [colorBtnSave]="colorBtnSave"
   (SaveChangesEvent)="saveChangesModal()"
- 
 >
 </app-modal>
 
@@ -33,7 +32,7 @@
   <div class="table px-2" *ngIf="temporalData.length > 0">
     <table class="table table-striped">
       <thead>
-        <tr class="text-center" >
+        <tr class="text-center">
           <th scope="col">Donate</th>
           <th class="anchor" scope="col-4">Type document</th>
           <th class="anchor" scope="col-4">Document</th>
@@ -64,11 +63,21 @@
             </span>
           </td>
 
-          <td class="anchor" style="vertical-align: middle">{{ beneficiary.DocumentType }}</td>
-          <td class="anchor" style="vertical-align: middle">{{ beneficiary.DocumentNumber }}</td>
-          <td class="anchor" style="vertical-align: middle">{{ beneficiary.Name }}</td>
-          <td class="anchor" style="vertical-align: middle">{{ beneficiary.LastName }}</td>
-          <td class="anchor" style="vertical-align: middle">{{ beneficiary.totalPeople}}</td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.DocumentType }}
+          </td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.DocumentNumber }}
+          </td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.Name }}
+          </td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.LastName }}
+          </td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.totalPeople }}
+          </td>
           <td>
             <span
               class="material-symbols-outlined cursor py-2"
@@ -80,17 +89,15 @@
           <td>
             <span
               class="material-symbols-outlined cursor py-2"
-              (click)="updateBeneficiary(beneficiary)"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="deleteBeneficiaryModal(beneficiary)"
             >
               delete
             </span>
           </td>
-
-
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-

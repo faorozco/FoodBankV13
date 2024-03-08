@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
+import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
@@ -59,7 +61,6 @@ export class ListBeneficiaryComponent implements OnInit {
     });
   }
 
-
   inputText(text: any) {
     this.dataTable = this.filterArray(this.temporalData, text);
   }
@@ -99,21 +100,55 @@ export class ListBeneficiaryComponent implements OnInit {
   saveChangesModal(): void {
     if (this.btnSaveTextModal === 'volunteer_activism') {
       this.delivery(this.beneficiary);
+    } else if (this.btnSaveTextModal === 'delete') {
+      this.deleteBeneficiary();
     }
+  }
+
+  deleteBeneficiary() {
+    this.sheetConection
+      .deleteBeneficiary(this.beneficiary.DocumentNumber)
+      .subscribe({
+        next: () => {
+          this.getAllBeneficiaries();
+          this.alertText = MSM_ALERTS.removedBeneficiary;
+          this.alertType = 'success';
+          setTimeout(() => {
+            this.alertText = '';
+            this.alertType = 'none';
+          }, TIME_ALERTS.alertDanger);
+
+        },
+        error: () => {
+          this.alertText = MSM_ALERTS.tryAgainLater;
+          this.alertType = 'danger';
+          setTimeout(() => {
+            this.alertText = '';
+            this.alertType = 'none';
+          }, TIME_ALERTS.alertDanger);
+        },
+      });
   }
 
   delivery(donate: BeneficiaryModel) {
     donate.DeliveryDate = this.dateNow();
     this.sheetConection.delivery(donate).subscribe({
-      next: (res) => {
+      next: () => {
         donate.check = true;
-        this.alertText = 'The beneficiary was successfully delivered';
+        this.alertText = MSM_ALERTS.deliverySuccess;
         this.alertType = 'success';
-        this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
         setTimeout(() => {
           this.alertText = '';
           this.alertType = 'none';
-        }, 1000);
+        }, TIME_ALERTS.alertSuccess);
+      },
+      error: () => {
+        this.alertText = MSM_ALERTS.tryAgainLater;
+        this.alertType = 'danger';
+        setTimeout(() => {
+          this.alertText = '';
+          this.alertType = 'none';
+        }, TIME_ALERTS.alertDanger);
       },
     });
   }

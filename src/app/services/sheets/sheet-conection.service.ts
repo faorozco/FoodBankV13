@@ -19,7 +19,7 @@ export class SheetConectionService {
     return this.http.get<any>(this.url);
   }
 
-  deleteBeneficiary(id: number) {
+  deleteBeneficiary(id: string) {
     return this.http.delete(`${this.url}/DocumentNumber/${id}`);
   }
 
