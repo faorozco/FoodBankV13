@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     if (this.validatedUser.length > 0) {
       localStorage.setItem("name", JSON.stringify(this.validatedUser[0].name))
       localStorage.setItem("user", JSON.stringify(this.validatedUser[0]))
+      localStorage.setItem("rol", JSON.stringify(this.validatedUser[0].rol))
       location.reload();
     }
     else {
