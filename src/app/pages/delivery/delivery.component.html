@@ -50,7 +50,7 @@
           <th class="anchor" scope="col-4">Name</th>
           <th class="anchor" scope="col-4">Lastname</th>
           <th scope="col">Nationality</th>
-
+          <th scope="col">Deliver</th>
           <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
@@ -62,6 +62,7 @@
           <td class="anchor">{{ beneficiary.Name }}</td>
           <td class="anchor">{{ beneficiary.LastName }}</td>
           <td>{{ beneficiary.Nationality }}</td>
+          <td>{{ beneficiary.EditBy }}</td>
 
           <td *ngIf="rol">
             <span
