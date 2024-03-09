@@ -47,7 +47,7 @@ export class ListBeneficiaryComponent implements OnInit {
         this.temporalData = res.map((obj: BeneficiaryModel) => {
           return {
             ...obj,
-            lastEdition: obj.RegistrationDate.split(' ')[0],
+            lastEdition: obj.RegistrationDate.split(',')[0],
             index: res.indexOf(obj),
             nameUpperCase: obj.Name.toUpperCase(),
             LastUpperCase: obj.LastName.toUpperCase(),
