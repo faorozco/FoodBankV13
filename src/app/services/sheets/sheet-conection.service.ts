@@ -55,7 +55,7 @@ export class SheetConectionService {
     if (rol === 'DEV') {
       url = this.listBeneficiariesDEV;
     }
-    return this.http.put(`${url}/${id}`, body);
+    return this.http.put(`${url}/DocumentNumber/${id}`, body);
   }
 
   delivery(body: BeneficiaryModel) {

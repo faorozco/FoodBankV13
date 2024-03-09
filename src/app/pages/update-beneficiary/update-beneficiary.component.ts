@@ -24,6 +24,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
   btnSaveTextModal: 'delete' = 'delete';
   colorBtnSave: 'success' | 'danger' = 'danger';
   totalPeople!: number;
+  disableButtonSubmit!: boolean;
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -82,8 +83,16 @@ export class UpdateBeneficiaryComponent implements OnInit {
 
   onSubmit() {
     if (!this.formSheet.invalid && this.totalPeople > 0) {
+      this.disableButtonSubmit = true;
+      const body = {
+        ...this.formSheet.value,
+        EditBy: JSON.parse(localStorage.getItem('nameFull')!),
+        RegistrationDate: this.sheetConection
+          .getCurrentDateTime()
+          .toLocaleString(),
+      };
       this.sheetConection
-        .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
+        .updateBeneficiary(this.beneficiary.DocumentNumber, body)
         .subscribe({
           next: () => {
             this.alertType = 'success';
@@ -93,6 +102,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
             }, TIME_ALERTS.alertSuccess);
           },
           error: () => {
+            this.disableButtonSubmit = false;
             this.alertType = 'danger';
             this.alertText = 'An error occurred';
             setTimeout(() => {
@@ -101,17 +111,14 @@ export class UpdateBeneficiaryComponent implements OnInit {
             }, TIME_ALERTS.errorAlert);
           },
         });
-    }
-    else if (this.totalPeople === 0 ) {
-
+    } else if (this.totalPeople === 0) {
       this.alertText = MSM_ALERTS.numeroIqualtoZero;
       this.alertType = 'warning';
       setTimeout(() => {
         this.alertText = '';
         this.alertType = 'none';
       }, TIME_ALERTS.alertWarning);
-   }
-    else {
+    } else {
       this.alertType = 'warning';
       this.alertText = MSM_ALERTS.pleaseAllFields;
       setTimeout(() => {

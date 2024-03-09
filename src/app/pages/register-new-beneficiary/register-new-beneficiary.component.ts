@@ -25,6 +25,10 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   ) {
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
+      EditBy: new FormControl(
+        JSON.parse(localStorage.getItem('nameFull')!),
+        Validators.required
+      ),
       DocumentType: new FormControl('', Validators.required),
       DocumentNumber: new FormControl('', Validators.required),
       Name: new FormControl('', Validators.required),
@@ -105,18 +109,14 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
           }, TIME_ALERTS.errorAlert);
         },
       });
-    } else if (this.totalPeople === 0 ) {
-
-       this.alertText = MSM_ALERTS.numeroIqualtoZero;
-       this.alertType = 'warning';
-       setTimeout(() => {
-         this.alertText = '';
-         this.alertType = 'none';
-       }, TIME_ALERTS.alertWarning);
-    }
-    
-    
-    else {
+    } else if (this.totalPeople === 0) {
+      this.alertText = MSM_ALERTS.numeroIqualtoZero;
+      this.alertType = 'warning';
+      setTimeout(() => {
+        this.alertText = '';
+        this.alertType = 'none';
+      }, TIME_ALERTS.alertWarning);
+    } else {
       this.alertText = MSM_ALERTS.pleaseAllFields;
       this.alertType = 'warning';
       setTimeout(() => {
