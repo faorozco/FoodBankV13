@@ -39,7 +39,9 @@
           <th class="anchor" scope="col-4">Name</th>
           <th class="anchor" scope="col-4">Lastname</th>
           <th class="anchor" scope="col-4">People</th>
-          <th scope="col">Edit</th>
+          <th class="anchor" scope="col-4">Last Edition</th>
+          <th class="anchor" scope="col-4" *ngIf="rol">Edit by</th>
+          <th scope="col" >Edit</th>
           <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
@@ -77,6 +79,12 @@
           </td>
           <td class="anchor" style="vertical-align: middle">
             {{ beneficiary.totalPeople }}
+          </td>
+          <td class="anchor" style="vertical-align: middle">
+            {{ beneficiary.RegistrationDate | date: 'dd/MM/yyyy' }}
+          </td>
+          <td class="anchor" style="vertical-align: middle" *ngIf="rol">
+            {{ beneficiary.EditBy }}
           </td>
           <td>
             <span
