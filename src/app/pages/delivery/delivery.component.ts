@@ -24,6 +24,7 @@ export class DeliveryComponent implements OnInit {
   beneficiary!: BeneficiaryModel;
   rol: boolean = false;
   user: UserModel = JSON.parse(localStorage.getItem('user')!);
+  disableTable: boolean = true
 
   constructor(
     private sheetConectionService: SheetConectionService,
@@ -70,6 +71,7 @@ export class DeliveryComponent implements OnInit {
           };
         });
         this.dataTable = this.temporalData;
+        this.disableTable = true
       },
 
       error: () => {
@@ -88,9 +90,10 @@ export class DeliveryComponent implements OnInit {
   }
 
   saveChangesModal() {
+    this.disableTable = false
     if (this.btnSaveTextModal === 'delete') {
       this.deleteDelivery(this.beneficiary);
-      this.getAllDelivery();
+
     }
   }
 

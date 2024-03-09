@@ -54,7 +54,7 @@
           <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="disableTable">
         <tr *ngFor="let beneficiary of dataTable">
           <td>{{ beneficiary.numberList }}</td>
           <td>{{ beneficiary.DeliveryDate }}</td>

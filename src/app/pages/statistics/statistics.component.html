@@ -40,26 +40,15 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2" class="pt-4"> Over 65 years old</td>
+            <td colspan="2" class="pt-4">People between 0 and 4 years old</td>
           </tr>
           <tr class="table-danger">
             <th scope="row">Female</th>
-            <td>{{totalFemale65}}</td>
+            <td>{{totalFemale0_4}}</td>
           </tr>
           <tr class="table-primary">
             <th scope="row">Male</th>
-            <td>{{totalMale65}}</td>
-          </tr>
-          <tr>
-            <td colspan="2" class="pt-4">People between 18 and 64 years old</td>
-          </tr>
-          <tr class="table-danger">
-            <th scope="row">Female</th>
-            <td>{{totalFemale18_64}}</td>
-          </tr>
-          <tr class="table-primary">
-            <th scope="row">Male</th>
-            <td>{{totalMale18_64}}</td>
+            <td>{{totalMale0_4}}</td>
           </tr>
           <tr>
             <td colspan="2" class="pt-4">People between 5 and 17 years old</td>
@@ -73,16 +62,30 @@
             <td>{{totalMale5_17}}</td>
           </tr>
           <tr>
-            <td colspan="2" class="pt-4">People between 0 and 4 years old</td>
+            <td colspan="2" class="pt-4">People between 18 and 64 years old</td>
           </tr>
           <tr class="table-danger">
             <th scope="row">Female</th>
-            <td>{{totalFemale0_4}}</td>
+            <td>{{totalFemale18_64}}</td>
           </tr>
           <tr class="table-primary">
             <th scope="row">Male</th>
-            <td>{{totalMale0_4}}</td>
+            <td>{{totalMale18_64}}</td>
           </tr>
+          <tr>
+            <td colspan="2" class="pt-4"> Over 65 years old</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Female</th>
+            <td>{{totalFemale65}}</td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">Male</th>
+            <td>{{totalMale65}}</td>
+          </tr>
+
+
+      
           <tr class="table-warning">
             <th scope="row">TOTAL RECORDS</th>
             <td><strong> {{this.filteredDates.length}} </strong></td>

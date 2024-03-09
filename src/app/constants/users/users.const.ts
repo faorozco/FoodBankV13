@@ -4,6 +4,15 @@ import { ROL_ADMIN, ROL_DELIVER } from "./roles.const";
 export const USERS: UserModel[] = [
     {
         id: 1,
+        name: 'Usuario de Prueba',
+        lastName: 'de desarrollo',
+        functionalities: ROL_ADMIN,
+        user: 'prueba',
+        password: '123',
+        rol: 'DEV'
+    },
+    {
+        id: 1,
         name: 'Juan Miguel',
         lastName: 'Piedrahaita',
         functionalities: ROL_ADMIN,
