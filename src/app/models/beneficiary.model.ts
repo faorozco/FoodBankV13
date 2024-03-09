@@ -28,4 +28,5 @@ export interface BeneficiaryModel {
   numberList?: string | number;
   totalPeople?: number;
   EditBy: string;
+  lastEdition?: string
 }
