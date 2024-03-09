@@ -56,7 +56,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   getAllDelivery() {
-    this.sheetConectionService.getAllDeliveries().subscribe({
+   return this.sheetConectionService.getAllDeliveries().subscribe({
       next: (data) => {
         this.temporalData = data.map((deliveries: any) => {
           return {
@@ -90,6 +90,7 @@ export class DeliveryComponent implements OnInit {
   saveChangesModal() {
     if (this.btnSaveTextModal === 'delete') {
       this.deleteDelivery(this.beneficiary);
+      this.getAllDelivery();
     }
   }
 
@@ -99,11 +100,11 @@ export class DeliveryComponent implements OnInit {
         this.alertText = MSM_ALERTS.removedBeneficiary;
         this.alertType = 'success';
         this.bodyText = ` ${this.beneficiary.Name} ${this.beneficiary.LastName} was eliminated`;
-        this.getAllDelivery();
         setTimeout(() => {
           this.alertText = '';
           this.alertType = 'none';
         }, TIME_ALERTS.alertSuccess);
+        this.getAllDelivery();
       },
       error: () => {
         this.alertText = MSM_ALERTS.tryAgainLater;
