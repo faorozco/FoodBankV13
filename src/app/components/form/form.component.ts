@@ -47,7 +47,6 @@ export class FormComponent implements OnInit {
 
       this.partForm = 2;
     }
-    console.log(this.formGroup.value)
   }
 
   back(): void {

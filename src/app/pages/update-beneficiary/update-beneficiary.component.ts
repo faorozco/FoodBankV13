@@ -17,7 +17,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   alertText = '';
   partForm: number = 1;
-  beneficiary: any = undefined;
+  beneficiary!: BeneficiaryModel;
   modalTitle: string = 'Modal Title';
   bodyText: string = 'Aqui se coloca el texto';
   btnCloseTextModal: string = 'Close';
@@ -35,6 +35,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
     }
+    this.beneficiary = history.state.beneficiary;
     this.formSheet = new FormGroup({
       RegistrationDate: new FormControl('pendiente', Validators.required),
       DocumentType: new FormControl('', Validators.required),
@@ -57,8 +58,9 @@ export class UpdateBeneficiaryComponent implements OnInit {
       MaleOver65: new FormControl('', Validators.required),
       photo: new FormControl('agregar link de carpeta', Validators.required),
     });
-    this.beneficiary = history.state.beneficiary;
-    this.formSheet.patchValue(this.beneficiary);
+  
+    this.formSheet.patchValue(this.beneficiary);  
+  
 
     if (this.beneficiary === undefined) {
       this.router.navigate(['/']);

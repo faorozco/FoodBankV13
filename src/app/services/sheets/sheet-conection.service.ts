@@ -49,7 +49,7 @@ export class SheetConectionService {
     return dateTimeString;
   }
 
-  updateBeneficiary(id: number, body: BeneficiaryModel) {
+  updateBeneficiary(id: string, body: BeneficiaryModel) {
     let url = this.listBeneficiariesAPIFIMLM;
     const rol = JSON.parse(localStorage.getItem('rol')!);
     if (rol === 'DEV') {
