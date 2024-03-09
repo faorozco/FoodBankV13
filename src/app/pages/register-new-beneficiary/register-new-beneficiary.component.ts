@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
 @Component({
@@ -76,7 +77,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.formSheet.invalid) {
+    if (!this.formSheet.invalid && this.totalPeople > 0) {
       this.disableButtonSubmit = true;
       const body = {
         ...this.formSheet.value,
@@ -86,7 +87,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       };
       this.sheetConection.newBeneficiary(body).subscribe({
         next: () => {
-          this.alertText = 'the beneficiary has been created correctly';
+          this.alertText = MSM_ALERTS.createBeneficiarySuccess;
           this.alertType = 'success';
           setTimeout(() => {
             this.alertText = '';
@@ -95,7 +96,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
           }, 3000);
         },
         error: () => {
-          this.alertText = 'Try again later';
+          this.alertText = MSM_ALERTS.tryAgainLater;
           this.alertType = 'danger';
           setTimeout(() => {
             this.alertText = '';
@@ -103,13 +104,24 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
           }, 5000);
         },
       });
-    } else {
-      this.alertText = 'Please fill all the fields';
+    } else if (this.totalPeople === 0 ) {
+
+       this.alertText = MSM_ALERTS.numeroIqualtoZero;
+       this.alertType = 'warning';
+       setTimeout(() => {
+         this.alertText = '';
+         this.alertType = 'none';
+       }, 3000);
+    }
+    
+    
+    else {
+      this.alertText = MSM_ALERTS.pleaseAllFields;
       this.alertType = 'warning';
       setTimeout(() => {
         this.alertText = '';
         this.alertType = 'none';
-      }, 5000);
+      }, 3000);
     }
   }
 }
