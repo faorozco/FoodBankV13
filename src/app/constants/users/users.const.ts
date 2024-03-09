@@ -45,7 +45,7 @@ export const USERS: UserModel[] = [
         functionalities: ROL_DELIVER,
         user: 'claristizabal',
         password: 'v6B7n',
-        rol: 'COORDINATOR'
+        rol: 'DELIVER'
     },
     {
         id: 6,
@@ -54,7 +54,7 @@ export const USERS: UserModel[] = [
         functionalities: ROL_DELIVER,
         user: 'contingencia',
         password: 'v8B12',
-        rol: 'COORDINATOR'
+        rol: 'DELIVER'
     },
 ]
 

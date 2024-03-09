@@ -42,10 +42,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
       Sex: new FormControl('', Validators.required),
       City: new FormControl('', Validators.required),
       Address: new FormControl('', Validators.required),
-      PhoneNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^\d+$/),
-      ]),
+      PhoneNumber: new FormControl('', Validators.required),
       Nationality: new FormControl('', Validators.required),
       FemaleBetween0_4: new FormControl('', Validators.required),
       MaleBetween0_4: new FormControl('', Validators.required),
