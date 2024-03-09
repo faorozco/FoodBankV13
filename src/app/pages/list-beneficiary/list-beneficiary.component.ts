@@ -23,8 +23,8 @@ export class ListBeneficiaryComponent implements OnInit {
   btnCloseTextModal: string = 'Close';
   beneficiary!: BeneficiaryModel;
   colorBtnSave: 'success' | 'danger' = 'success';
-  rol: boolean = false
-  user: UserModel  = JSON.parse(localStorage.getItem("user")!)
+  rol: boolean = false;
+  user: UserModel = JSON.parse(localStorage.getItem('user')!);
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -35,8 +35,8 @@ export class ListBeneficiaryComponent implements OnInit {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
     }
-    if(this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {
-      this.rol = true
+    if (this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {
+      this.rol = true;
     }
     this.getAllBeneficiaries();
   }
@@ -126,7 +126,6 @@ export class ListBeneficiaryComponent implements OnInit {
             this.alertText = '';
             this.alertType = 'none';
           }, TIME_ALERTS.alertDanger);
-
         },
         error: () => {
           this.alertText = MSM_ALERTS.tryAgainLater;
@@ -141,6 +140,7 @@ export class ListBeneficiaryComponent implements OnInit {
 
   delivery(donate: BeneficiaryModel) {
     donate.DeliveryDate = this.dateNow();
+    donate.EditBy = JSON.parse(localStorage.getItem('nameFull')!);
     this.sheetConection.delivery(donate).subscribe({
       next: () => {
         donate.check = true;
