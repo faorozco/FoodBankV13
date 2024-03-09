@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
+import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
 @Component({
@@ -33,15 +34,15 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       City: new FormControl('', Validators.required),
       Address: new FormControl('', Validators.required),
       PhoneNumber: new FormControl('', Validators.required),
-      Nationality: new FormControl('', Validators.required),
-      FemaleBetween0_4: new FormControl('', Validators.required),
-      MaleBetween0_4: new FormControl('', Validators.required),
-      FemaleBetween5_17: new FormControl('', Validators.required),
-      MaleBetween5_17: new FormControl('', Validators.required),
-      FemaleBetween18_64: new FormControl('', Validators.required),
-      MaleBetween18_64: new FormControl('', Validators.required),
-      FemaleOver65: new FormControl('', Validators.required),
-      MaleOver65: new FormControl('', Validators.required),
+      Nationality: new FormControl('0', Validators.required),
+      FemaleBetween0_4: new FormControl('0', Validators.required),
+      MaleBetween0_4: new FormControl('0', Validators.required),
+      FemaleBetween5_17: new FormControl('0', Validators.required),
+      MaleBetween5_17: new FormControl('0', Validators.required),
+      FemaleBetween18_64: new FormControl('0', Validators.required),
+      MaleBetween18_64: new FormControl('0', Validators.required),
+      FemaleOver65: new FormControl('0', Validators.required),
+      MaleOver65: new FormControl('0', Validators.required),
       photo: new FormControl('agregar link de carpeta', Validators.required),
     });
   }
@@ -93,7 +94,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
             this.alertText = '';
             this.alertType = 'none';
             this.router.navigate(['/']);
-          }, 3000);
+          }, TIME_ALERTS.alertSuccess);
         },
         error: () => {
           this.alertText = MSM_ALERTS.tryAgainLater;
@@ -101,7 +102,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
           setTimeout(() => {
             this.alertText = '';
             this.alertType = 'none';
-          }, 5000);
+          }, TIME_ALERTS.errorAlert);
         },
       });
     } else if (this.totalPeople === 0 ) {
@@ -111,7 +112,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
        setTimeout(() => {
          this.alertText = '';
          this.alertType = 'none';
-       }, 3000);
+       }, TIME_ALERTS.alertWarning);
     }
     
     
@@ -121,7 +122,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       setTimeout(() => {
         this.alertText = '';
         this.alertType = 'none';
-      }, 3000);
+      }, TIME_ALERTS.alertWarning);
     }
   }
 }

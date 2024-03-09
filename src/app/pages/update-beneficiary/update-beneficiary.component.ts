@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
+import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
 import { BeneficiaryModel } from 'src/app/models/beneficiary.model';
 import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.service';
 
@@ -79,16 +81,16 @@ export class UpdateBeneficiaryComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.formSheet.invalid) {
+    if (!this.formSheet.invalid && this.totalPeople > 0) {
       this.sheetConection
         .updateBeneficiary(this.beneficiary.index, this.formSheet.value)
         .subscribe({
           next: () => {
             this.alertType = 'success';
-            this.alertText = 'Beneficiary updated successfully';
+            this.alertText = MSM_ALERTS.beneficiaryUpdate;
             setTimeout(() => {
               this.router.navigate(['/']);
-            }, 2000);
+            }, TIME_ALERTS.alertSuccess);
           },
           error: () => {
             this.alertType = 'danger';
@@ -96,16 +98,26 @@ export class UpdateBeneficiaryComponent implements OnInit {
             setTimeout(() => {
               this.alertType = 'none';
               this.alertText = '';
-            }, 2000);
+            }, TIME_ALERTS.errorAlert);
           },
         });
-    } else {
+    }
+    else if (this.totalPeople === 0 ) {
+
+      this.alertText = MSM_ALERTS.numeroIqualtoZero;
       this.alertType = 'warning';
-      this.alertText = 'Please fill all the fields';
+      setTimeout(() => {
+        this.alertText = '';
+        this.alertType = 'none';
+      }, TIME_ALERTS.alertWarning);
+   }
+    else {
+      this.alertType = 'warning';
+      this.alertText = MSM_ALERTS.pleaseAllFields;
       setTimeout(() => {
         this.alertType = 'none';
         this.alertText = '';
-      }, 2000);
+      }, TIME_ALERTS.alertWarning);
     }
   }
 }
