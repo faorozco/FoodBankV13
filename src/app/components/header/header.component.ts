@@ -14,10 +14,12 @@ export class HeaderComponent implements OnInit {
   optionTwo = OPTIONS.newBeneficiary;
   optionThree = OPTIONS.deliveryList;
   enableHeader: any = localStorage.getItem('user')?.length
+  user: string = JSON.parse(localStorage.getItem('username')!)
 
   constructor(public router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   logout() {
