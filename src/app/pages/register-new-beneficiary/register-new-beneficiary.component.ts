@@ -60,7 +60,6 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       this.sumTotalPeople();
     });
 
-    console.log(this.sheetConection.getCurrentDateTime());
   }
 
   sumTotalPeople() {
