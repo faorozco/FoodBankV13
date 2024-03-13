@@ -39,8 +39,7 @@ export class StatisticsComponent implements OnInit {
         .filter(
           (date: any, index: number, self: any[]) =>
             self.indexOf(date) === index
-        )
-        .reverse();
+        );
     }
   }
 

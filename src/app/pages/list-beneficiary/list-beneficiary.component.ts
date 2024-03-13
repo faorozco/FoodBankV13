@@ -173,7 +173,7 @@ export class ListBeneficiaryComponent implements OnInit {
     const caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let stringAleatorio = "";
   
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 30; i++) {
       const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
       stringAleatorio += caracteres[indiceAleatorio];
     }
