@@ -1,4 +1,57 @@
-<nav class="navbar navbar-dark bg-primary" *ngIf="enableHeader">
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-primary"
+  *ngIf="enableHeader"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="./home">
+      <img
+        src="../../../assets/imgs/img-fimlm.png"
+        alt="30"
+        width="30"
+        height="30"
+        class="d-inline-block"
+      />
+      Food Bank Registration:
+      <strong>{{ user }}</strong>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="./">{{
+          home
+        }}</a>
+        <a
+          class="nav-link active"
+          aria-current="page"
+          routerLink="./list-beneficiaries"
+          >List of beneficiaries</a
+        >
+        <a class="nav-link active" routerLink="./new-beneficiary"
+          >New beneficiary</a
+        >
+        <a class="nav-link active w-10" routerLink="./administration"
+          >list de deliveries</a
+        >
+        <button class="btn btn-primary btn-sm" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="./home">
       <img
@@ -11,49 +64,17 @@
       Food Bank Registration:
       <strong>{{user}}</strong> 
     </a>
-
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="./">{{
-            home
-          }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="./list-beneficiaries">{{
-            optionOne
-          }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="./new-beneficiary">{{ optionTwo }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="./deliveries">{{ optionThree }}</a>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-secondary" (click)="logout()">logout</button>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="./home">Home</a>
+        <a class="nav-link" href="#">List of beneficiaries</a>
+        <a class="nav-link" href="#">List of deliveries</a>
+        <a class="nav-link disabled" aria-disabled="true">New beneficiary</a>
+        <a class="nav-link disabled" aria-disabled="true" type="button"> <button type="button" class="btn btn-primary btn-sm" (click)="logout()">logout</button></a>
+      </div>
     </div>
-  </div>
-</nav>
-
-<!-- <nav class="navbar navbar-dark bg-primary">
-  <div class="container-fluid">
-    <span routerLink="./" class="navbar-brand mb-0 h1">{{ title }}</span>
-      <button routerLink="./" mat-mini-fab color="link" aria-label="Example icon button with a home icon">
-        <mat-icon>home</mat-icon>
-      </button>
   </div>
 </nav> -->

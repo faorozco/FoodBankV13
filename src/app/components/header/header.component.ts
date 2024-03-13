@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OPTIONS } from 'src/app/constants/option.const';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +9,6 @@ import { OPTIONS } from 'src/app/constants/option.const';
 export class HeaderComponent implements OnInit {
   title = 'FBR'
   home = 'Home';
-  optionOne = OPTIONS.beneficiaryList;
-  optionTwo = OPTIONS.newBeneficiary;
-  optionThree = OPTIONS.deliveryList;
   enableHeader: any = localStorage.getItem('user')?.length
   user: string = JSON.parse(localStorage.getItem('username')!)
 

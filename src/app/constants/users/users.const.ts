@@ -281,4 +281,22 @@ export const USERS: UserModel[] = [
     password: '5W6Q9',
     rol: 'DELIVER',
   },
+  {
+    id: 25,
+    name: 'Carolina',
+    lastName: 'Rodriguez',
+    functionalities: ROL_DELIVER,
+    user: 'caroro',
+    password: '8W7Qq',
+    rol: 'DELIVER',
+  },
+  {
+    id: 26,
+    name: 'Martin',
+    lastName: 'Mortaro',
+    functionalities: ROL_DELIVER,
+    user: 'marmor',
+    password: '1S5Qp',
+    rol: 'DELIVER',
+  },
 ];
