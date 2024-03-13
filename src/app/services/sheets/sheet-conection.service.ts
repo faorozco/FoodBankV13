@@ -82,6 +82,6 @@ export class SheetConectionService {
     if (rol === 'DEV') {
       url = this.EntregadosDevApi;
     }
-    return this.http.delete(`${url}/${id}`);
+    return this.http.delete(`${url}/idDelivery/${id}`);
   }
 }

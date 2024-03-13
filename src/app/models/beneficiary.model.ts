@@ -27,6 +27,8 @@ export interface BeneficiaryModel {
   DeliveryHour?: string;
   numberList?: string | number;
   totalPeople?: number;
-  EditBy: string;
-  lastEdition?: string
+  EditBy?: string;
+  DeliverBy?: string;
+  lastEdition?: string;
+  idDelivery?: string;
 }

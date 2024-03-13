@@ -141,7 +141,8 @@ export class ListBeneficiaryComponent implements OnInit {
 
   delivery(donate: BeneficiaryModel) {
     donate.DeliveryDate = this.dateNow();
-    donate.EditBy = JSON.parse(localStorage.getItem('nameFull')!);
+    donate.DeliverBy = JSON.parse(localStorage.getItem('nameFull')!);
+    donate.idDelivery = this.generarStringAleatorio();
     this.sheetConection.delivery(donate).subscribe({
       next: () => {
         donate.check = true;
@@ -165,5 +166,18 @@ export class ListBeneficiaryComponent implements OnInit {
 
   dateNow() {
     return this.sheetConection.getCurrentDateTime();
+  }
+
+
+  generarStringAleatorio() {
+    const caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let stringAleatorio = "";
+  
+    for (let i = 0; i < 25; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+      stringAleatorio += caracteres[indiceAleatorio];
+    }
+  
+    return stringAleatorio;
   }
 }

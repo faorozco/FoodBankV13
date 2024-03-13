@@ -98,7 +98,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   deleteDelivery(delivery: any) {
-    return this.sheetConectionService.deleteDelivery(delivery.index).subscribe({
+    return this.sheetConectionService.deleteDelivery(delivery.idDelivery).subscribe({
       next: () => {
         this.alertText = MSM_ALERTS.removedBeneficiary;
         this.alertType = 'success';
