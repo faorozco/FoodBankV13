@@ -58,9 +58,8 @@ export class UpdateBeneficiaryComponent implements OnInit {
       MaleOver65: new FormControl('', Validators.required),
       photo: new FormControl('agregar link de carpeta', Validators.required),
     });
-  
-    this.formSheet.patchValue(this.beneficiary);  
-  
+
+    this.formSheet.patchValue(this.beneficiary);
 
     if (this.beneficiary === undefined) {
       this.router.navigate(['/']);
@@ -89,9 +88,7 @@ export class UpdateBeneficiaryComponent implements OnInit {
       const body = {
         ...this.formSheet.value,
         EditBy: JSON.parse(localStorage.getItem('nameFull')!),
-        RegistrationDate: this.sheetConection
-          .getCurrentDateTime()
-          .toLocaleString(),
+        RegistrationDate: this.sheetConection.getCurrentDateTime(),
       };
       this.sheetConection
         .updateBeneficiary(this.beneficiary.DocumentNumber, body)

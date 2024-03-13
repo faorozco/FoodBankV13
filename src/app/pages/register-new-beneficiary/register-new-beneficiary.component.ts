@@ -88,9 +88,7 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
       this.disableButtonSubmit = true;
       const body = {
         ...this.formSheet.value,
-        RegistrationDate: this.sheetConection
-          .getCurrentDateTime()
-          .toLocaleString(),
+        RegistrationDate: this.sheetConection.getCurrentDateTime(),
       };
       this.sheetConection.newBeneficiary(body).subscribe({
         next: () => {

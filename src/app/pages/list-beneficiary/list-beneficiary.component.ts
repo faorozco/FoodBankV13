@@ -140,7 +140,7 @@ export class ListBeneficiaryComponent implements OnInit {
   }
 
   delivery(donate: BeneficiaryModel) {
-    donate.DeliveryDate = this.dateNow();
+    donate.DeliveryDate = this.sheetConection.getCurrentDateTime();
     donate.DeliverBy = JSON.parse(localStorage.getItem('nameFull')!);
     donate.idDelivery = this.generarStringAleatorio();
     this.sheetConection.delivery(donate).subscribe({
@@ -164,20 +164,16 @@ export class ListBeneficiaryComponent implements OnInit {
     });
   }
 
-  dateNow() {
-    return this.sheetConection.getCurrentDateTime();
-  }
-
-
   generarStringAleatorio() {
-    const caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let stringAleatorio = "";
-  
+    const caracteres =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let stringAleatorio = '';
+
     for (let i = 0; i < 30; i++) {
       const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
       stringAleatorio += caracteres[indiceAleatorio];
     }
-  
+
     return stringAleatorio;
   }
 }

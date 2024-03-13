@@ -45,7 +45,20 @@ export class SheetConectionService {
 
   getCurrentDateTime(): string {
     const currentDate = new Date();
-    const dateTimeString = currentDate.toLocaleString();
+
+    // Extraer componentes de la fecha
+    const dia = currentDate.getDate().toString().padStart(2, '0');
+    const mes = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Enero = 0
+    const año = currentDate.getFullYear().toString();
+
+    // Extraer componentes de la hora
+    const hora = currentDate.getHours().toString().padStart(2, '0');
+    const minuto = currentDate.getMinutes().toString().padStart(2, '0');
+    const segundo = currentDate.getSeconds().toString().padStart(2, '0');
+
+    // Concatenar componentes con el formato deseado
+    const dateTimeString = `${dia}/${mes}/${año}, ${hora}:${minuto}:${segundo}`;
+
     return dateTimeString;
   }
 
