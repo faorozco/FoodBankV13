@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import {FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
   @Input() partForm: number = 1;
@@ -16,16 +16,12 @@ export class FormComponent implements OnInit {
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
 
+  constructor() {}
 
-  constructor() {
-
-   }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   next(): void {
-    if(
+    if (
       this.formGroup.value.DocumentType == '' ||
       this.formGroup.value.DocumentNumber == '' ||
       this.formGroup.value.Name == '' ||
@@ -35,8 +31,7 @@ export class FormComponent implements OnInit {
       this.formGroup.value.City == '' ||
       this.formGroup.value.Address == '' ||
       this.formGroup.value.PhoneNumber == ''
-
-    ){
+    ) {
       this.alertText = 'Please fill all the fields';
       this.alertType = 'warning';
       setTimeout(() => {
@@ -44,7 +39,6 @@ export class FormComponent implements OnInit {
         this.alertType = 'none';
       }, 2000);
     } else {
-
       this.partForm = 2;
     }
   }
@@ -53,10 +47,7 @@ export class FormComponent implements OnInit {
     this.partForm = 1;
   }
 
-  Submit(){
+  Submit() {
     this.onSubmit.emit();
-
-
   }
-
 }
