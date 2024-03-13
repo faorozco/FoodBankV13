@@ -7,16 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title = 'FBR'
-  home = 'Home';
   enableHeader: any = localStorage.getItem('user')?.length
   user: string = JSON.parse(localStorage.getItem('username')!)
 
   constructor(public router: Router) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   logout() {
     localStorage.removeItem('user');

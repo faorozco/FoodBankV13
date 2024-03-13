@@ -59,6 +59,8 @@ export class RegisterNewBeneficiaryComponent implements OnInit {
     this.formSheet.valueChanges.subscribe((changes) => {
       this.sumTotalPeople();
     });
+
+    console.log(this.sheetConection.getCurrentDateTime());
   }
 
   sumTotalPeople() {
