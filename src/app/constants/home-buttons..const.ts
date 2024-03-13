@@ -14,7 +14,7 @@ export const HOME_BUTTONS = [
 
     },
     {
-        text: 'Create a new beneficiary of the  Maria Luisa de Moreno International Foundation',
+        text: 'List and administration the list of deliveries of the  Maria Luisa de Moreno International Foundation',
         router: '../administration',
         button: 'List of Deliveries',
         pathImag: '../../../assets/imgs/list-beneficiary.jpg',

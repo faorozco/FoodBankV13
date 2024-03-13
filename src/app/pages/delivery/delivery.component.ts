@@ -70,7 +70,7 @@ export class DeliveryComponent implements OnInit {
             DeliveryHour: deliveries.DeliveryDate.split(',')[1],
           };
         });
-        this.dataTable = this.temporalData;
+        this.dataTable = this.temporalData.reverse();
         this.disableTable = true
       },
 
