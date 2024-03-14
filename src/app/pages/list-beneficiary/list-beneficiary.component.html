@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="paginator" *ngIf="temporalData.length > 0">
     <mat-paginator [length]="paginatorLength"
                 [pageSize]="pageSize"
                 [pageSizeOptions]="pageSizeOptions"

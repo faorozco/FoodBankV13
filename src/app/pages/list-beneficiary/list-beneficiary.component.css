@@ -16,3 +16,8 @@
 thead{
   background-color: white;
 }
+
+.paginator{
+  padding-left: 8px;  
+  padding-right: 8px;
+}

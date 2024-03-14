@@ -12,3 +12,8 @@
   .container-delivery{
     margin-top: 80px;
 }
+
+.paginator{
+  padding-left: 8px;  
+  padding-right: 8px;
+}

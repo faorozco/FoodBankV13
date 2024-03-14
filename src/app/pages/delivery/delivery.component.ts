@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
 import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
@@ -12,7 +13,7 @@ import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.s
   styleUrls: ['./delivery.component.css'],
 })
 export class DeliveryComponent implements OnInit {
-  dataTable: BeneficiaryModel[] = [];
+  dataTable: BeneficiaryModel[][] = [];
   temporalData: BeneficiaryModel[] = [];
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
@@ -25,9 +26,15 @@ export class DeliveryComponent implements OnInit {
   rol: boolean = false;
   user: UserModel = JSON.parse(localStorage.getItem('user')!);
   disableTable: boolean = true
+  paginatorLength!: number;
+  pageSize: number = 5;
+  previousPageSize: number = 5;
+  pageSizeOptions: number[] = [5, 10, 15, 20];
+  pageIndex: number = 0;
+  pageEvent!: PageEvent;
 
   constructor(
-    private sheetConectionService: SheetConectionService,
+    private sheetConection: SheetConectionService,
     private router: Router
   ) {}
 
@@ -41,8 +48,27 @@ export class DeliveryComponent implements OnInit {
     this.getAllDelivery();
   }
 
+  getPaginatorData(event: PageEvent) {
+    const newPageSize = event.pageSize;
+    if (newPageSize !== this.previousPageSize) {
+      this.pageSize = newPageSize;
+      this.previousPageSize = newPageSize;
+      this.updateDataTable();
+    }
+    this.pageIndex = event.pageIndex;
+  }
+
+  updateDataTable() {
+    this.dataTable = this.sheetConection.dividirArrayObjetos(
+      this.temporalData,
+      this.pageSize
+    );
+  }
+
   inputText(text: any) {
-    this.dataTable = this.filterArray(this.temporalData, text);
+    const filteredData = this.filterArray(this.temporalData, text);
+    this.dataTable = this.sheetConection.dividirArrayObjetos(filteredData, this.pageSize);
+    this.paginatorLength = this.dataTable.length;
   }
 
   filterArray(value: any[], search: string) {
@@ -57,7 +83,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   getAllDelivery() {
-   return this.sheetConectionService.getAllDeliveries().subscribe({
+   return this.sheetConection.getAllDeliveries().subscribe({
       next: (data) => {
         this.temporalData = data.map((deliveries: any) => {
           return {
@@ -70,7 +96,11 @@ export class DeliveryComponent implements OnInit {
             DeliveryHour: deliveries.DeliveryDate.split(',')[1],
           };
         });
-        this.dataTable = this.temporalData.reverse();
+        this.dataTable = this.sheetConection.dividirArrayObjetos(
+          this.temporalData.reverse(),
+          this.pageSize
+        );
+        this.paginatorLength = this.dataTable.length;
         this.disableTable = true
       },
 
@@ -98,7 +128,7 @@ export class DeliveryComponent implements OnInit {
   }
 
   deleteDelivery(delivery: any) {
-    return this.sheetConectionService.deleteDelivery(delivery.idDelivery).subscribe({
+    return this.sheetConection.deleteDelivery(delivery.idDelivery).subscribe({
       next: () => {
         this.alertText = MSM_ALERTS.removedBeneficiary;
         this.alertType = 'success';
