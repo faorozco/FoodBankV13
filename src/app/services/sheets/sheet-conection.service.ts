@@ -43,8 +43,6 @@ export class SheetConectionService {
     return this.http.delete(`${url}/DocumentNumber/${id}`);
   }
 
-
-
   updateBeneficiary(id: string, body: BeneficiaryModel) {
     let url = this.listBeneficiariesAPIFIMLM;
     const rol = JSON.parse(localStorage.getItem('rol')!);
@@ -83,7 +81,6 @@ export class SheetConectionService {
 
   // ******* Funciones NO APIS **********
 
-
   dividirArrayObjetos(objetos: any[], numeroDivision: number): any[][] {
     const arrayDividido: any[][] = [];
     let subArray: any[] = [];
@@ -91,7 +88,10 @@ export class SheetConectionService {
     for (const objeto of objetos) {
       subArray.push(objeto);
 
-      if (subArray.length === numeroDivision || objetos.indexOf(objeto) === objetos.length - 1) {
+      if (
+        subArray.length === numeroDivision ||
+        objetos.indexOf(objeto) === objetos.length - 1
+      ) {
         arrayDividido.push(subArray);
         subArray = [];
       }
@@ -99,7 +99,6 @@ export class SheetConectionService {
 
     return arrayDividido;
   }
-
 
   getCurrentDateTime(): string {
     const currentDate = new Date();
@@ -119,6 +118,4 @@ export class SheetConectionService {
 
     return dateTimeString;
   }
-
-  
 }

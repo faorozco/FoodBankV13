@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MSM_ALERTS } from 'src/app/constants/msm-alert.const';
 import { TIME_ALERTS } from 'src/app/constants/timeAlerts.const';
@@ -13,7 +14,7 @@ import { SheetConectionService } from 'src/app/services/sheets/sheet-conection.s
 })
 export class ListBeneficiaryComponent implements OnInit {
   temporalData: BeneficiaryModel[] = [];
-  dataTable: BeneficiaryModel[] = [];
+  dataTable: BeneficiaryModel[][] = [];
   alertText = '';
   alertType: 'success' | 'warning' | 'danger' | 'none' = 'none';
   check = false;
@@ -25,7 +26,12 @@ export class ListBeneficiaryComponent implements OnInit {
   colorBtnSave: 'success' | 'danger' = 'success';
   rol: boolean = false;
   user: UserModel = JSON.parse(localStorage.getItem('user')!);
-  paginatorLength!: number
+  paginatorLength!: number;
+  pageSize: number = 5;
+  previousPageSize: number = 5;
+  pageSizeOptions: number[] = [5, 10, 15, 20];
+  pageIndex: number = 0;
+  pageEvent!: PageEvent;
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -35,11 +41,29 @@ export class ListBeneficiaryComponent implements OnInit {
   ngOnInit(): void {
     if (!localStorage.getItem('user')) {
       this.router.navigate(['./']);
+    } else {
+      if (this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {
+        this.rol = true;
+      }
+      this.getAllBeneficiaries();
     }
-    if (this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {
-      this.rol = true;
+  }
+
+  getPaginatorData(event: PageEvent) {
+    const newPageSize = event.pageSize;
+    if (newPageSize !== this.previousPageSize) {
+      this.pageSize = newPageSize;
+      this.previousPageSize = newPageSize;
+      this.updateDataTable();
     }
-    this.getAllBeneficiaries();
+    this.pageIndex = event.pageIndex;
+  }
+
+  updateDataTable() {
+    this.dataTable = this.sheetConection.dividirArrayObjetos(
+      this.temporalData,
+      this.pageSize
+    );
   }
 
   getAllBeneficiaries() {
@@ -64,7 +88,13 @@ export class ListBeneficiaryComponent implements OnInit {
             check: false,
           };
         });
-        this.dataTable = this.temporalData;
+        // this.dataTable = this.temporalData;
+        this.dataTable = this.sheetConection.dividirArrayObjetos(
+          this.temporalData,
+          this.pageSize
+        );
+
+        this.paginatorLength = this.dataTable.length;
       },
       error: () => {
         alert('try again later, check your internet connection');
@@ -72,10 +102,11 @@ export class ListBeneficiaryComponent implements OnInit {
     });
   }
 
-  inputText(text: any) {
-    this.dataTable = this.filterArray(this.temporalData, text);
-    this.paginatorLength = this.dataTable.length
-  }
+inputText(text: any) {
+  const filteredData = this.filterArray(this.temporalData, text);
+  this.dataTable = this.sheetConection.dividirArrayObjetos(filteredData, this.pageSize);
+  this.paginatorLength = this.dataTable.length;
+}
 
   filterArray(value: any[], search: string) {
     return value.filter((arr) => {

@@ -28,10 +28,11 @@
     </div>
   </div>
 
-  <div class="px-2">
+  <div>
     <mat-paginator [length]="paginatorLength"
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="getPaginatorData($event)"
                 aria-label="Select page">
   </mat-paginator>
   </div>
@@ -55,7 +56,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let beneficiary of dataTable" class="text-center">
+        <tr *ngFor="let beneficiary of dataTable[pageIndex]" class="text-center">
           <td>
             <span
               class="material-symbols-outlined cursor py-2"
