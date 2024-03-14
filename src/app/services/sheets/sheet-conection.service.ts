@@ -43,24 +43,7 @@ export class SheetConectionService {
     return this.http.delete(`${url}/DocumentNumber/${id}`);
   }
 
-  getCurrentDateTime(): string {
-    const currentDate = new Date();
 
-    // Extraer componentes de la fecha
-    const dia = currentDate.getDate().toString().padStart(2, '0');
-    const mes = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Enero = 0
-    const año = currentDate.getFullYear().toString();
-
-    // Extraer componentes de la hora
-    const hora = currentDate.getHours().toString().padStart(2, '0');
-    const minuto = currentDate.getMinutes().toString().padStart(2, '0');
-    const segundo = currentDate.getSeconds().toString().padStart(2, '0');
-
-    // Concatenar componentes con el formato deseado
-    const dateTimeString = `${dia}/${mes}/${año}, ${hora}:${minuto}:${segundo}`;
-
-    return dateTimeString;
-  }
 
   updateBeneficiary(id: string, body: BeneficiaryModel) {
     let url = this.listBeneficiariesAPIFIMLM;
@@ -97,4 +80,45 @@ export class SheetConectionService {
     }
     return this.http.delete(`${url}/idDelivery/${id}`);
   }
+
+  // ******* Funciones NO APIS **********
+
+
+  dividirArrayObjetos(objetos: any[], numeroDivision: number): any[][] {
+    const arrayDividido: any[][] = [];
+    let subArray: any[] = [];
+
+    for (const objeto of objetos) {
+      subArray.push(objeto);
+
+      if (subArray.length === numeroDivision || objetos.indexOf(objeto) === objetos.length - 1) {
+        arrayDividido.push(subArray);
+        subArray = [];
+      }
+    }
+
+    return arrayDividido;
+  }
+
+
+  getCurrentDateTime(): string {
+    const currentDate = new Date();
+
+    // Extraer componentes de la fecha
+    const dia = currentDate.getDate().toString().padStart(2, '0');
+    const mes = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Enero = 0
+    const año = currentDate.getFullYear().toString();
+
+    // Extraer componentes de la hora
+    const hora = currentDate.getHours().toString().padStart(2, '0');
+    const minuto = currentDate.getMinutes().toString().padStart(2, '0');
+    const segundo = currentDate.getSeconds().toString().padStart(2, '0');
+
+    // Concatenar componentes con el formato deseado
+    const dateTimeString = `${dia}/${mes}/${año}, ${hora}:${minuto}:${segundo}`;
+
+    return dateTimeString;
+  }
+
+  
 }
