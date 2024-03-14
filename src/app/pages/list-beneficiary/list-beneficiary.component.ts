@@ -25,6 +25,7 @@ export class ListBeneficiaryComponent implements OnInit {
   colorBtnSave: 'success' | 'danger' = 'success';
   rol: boolean = false;
   user: UserModel = JSON.parse(localStorage.getItem('user')!);
+  paginatorLength!: number
 
   constructor(
     private sheetConection: SheetConectionService,
@@ -73,6 +74,7 @@ export class ListBeneficiaryComponent implements OnInit {
 
   inputText(text: any) {
     this.dataTable = this.filterArray(this.temporalData, text);
+    this.paginatorLength = this.dataTable.length
   }
 
   filterArray(value: any[], search: string) {

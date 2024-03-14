@@ -28,6 +28,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { LoginComponent } from './pages/login/login.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { LoginComponent } from './pages/login/login.component';
     SpinnerComponent,
     HomeAdminComponent,
     LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}

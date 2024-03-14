@@ -14,7 +14,7 @@
 
   <!-- ********* formulario ************* -->
 
-  <div class="row p-4 mb-4" *ngIf="temporalData.length !== 0">
+  <div class="row p-4 mb-2" *ngIf="temporalData.length !== 0">
     <div class="input-group">
       <input
         #text
@@ -27,6 +27,15 @@
       />
     </div>
   </div>
+
+  <div class="px-2">
+    <mat-paginator [length]="paginatorLength"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+  </mat-paginator>
+  </div>
+
 
   <!-- ********* tabla ************* -->
   <div class="table px-2" *ngIf="temporalData.length > 0">
