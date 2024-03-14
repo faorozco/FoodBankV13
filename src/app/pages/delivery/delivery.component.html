@@ -47,14 +47,15 @@
   <!-- ********** Paginador ********** -->
 
   <div class="paginator" *ngIf="temporalData.length > 0">
-    <mat-paginator [length]="paginatorLength"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="getPaginatorData($event)"
-                aria-label="Select page">
-  </mat-paginator>
+    <mat-paginator
+      [length]="paginatorLength"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="getPaginatorData($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
-
 
   <!-- *********** tabla ********* -->
 
@@ -74,13 +75,19 @@
       </thead>
       <tbody *ngIf="disableTable">
         <tr *ngFor="let beneficiary of dataTable[pageIndex]">
-          <td>{{ beneficiary.numberList }}</td>
-          <td>{{ beneficiary.DeliveryDate }}</td>
-          <td class="anchor">{{ beneficiary.DocumentNumber }}</td>
-          <td class="anchor">{{ beneficiary.Name }}</td>
-          <td class="anchor">{{ beneficiary.LastName }}</td>
-          <td>{{ beneficiary.Nationality }}</td>
-          <td>{{ beneficiary.EditBy }}</td>
+          <td style="vertical-align: middle">{{ beneficiary.numberList }}</td>
+          <td style="vertical-align: middle">{{ beneficiary.DeliveryDate }}</td>
+          <td style="vertical-align: middle" class="anchor">
+            {{ beneficiary.DocumentNumber }}
+          </td>
+          <td style="vertical-align: middle" class="anchor">
+            {{ beneficiary.Name }}
+          </td>
+          <td style="vertical-align: middle" class="anchor">
+            {{ beneficiary.LastName }}
+          </td>
+          <td style="vertical-align: middle">{{ beneficiary.Nationality }}</td>
+          <td style="vertical-align: middle">{{ beneficiary.EditBy }}</td>
 
           <td *ngIf="rol">
             <span

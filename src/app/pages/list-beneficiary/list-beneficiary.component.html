@@ -29,14 +29,15 @@
   </div>
 
   <div class="paginator" *ngIf="temporalData.length > 0">
-    <mat-paginator [length]="paginatorLength"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="getPaginatorData($event)"
-                aria-label="Select page">
-  </mat-paginator>
+    <mat-paginator
+      [length]="paginatorLength"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="getPaginatorData($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
-
 
   <!-- ********* tabla ************* -->
   <div class="table px-2" *ngIf="temporalData.length > 0">
@@ -51,12 +52,15 @@
           <th class="anchor" scope="col-4">People</th>
           <th class="anchor" scope="col-4">Last Edition</th>
           <th class="anchor" scope="col-4" *ngIf="rol">Edit by</th>
-          <th scope="col" >Edit</th>
+          <th scope="col">Edit</th>
           <th scope="col" *ngIf="rol">Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let beneficiary of dataTable[pageIndex]" class="text-center">
+        <tr
+          *ngFor="let beneficiary of dataTable[pageIndex]"
+          class="text-center"
+        >
           <td>
             <span
               class="material-symbols-outlined cursor py-2"
