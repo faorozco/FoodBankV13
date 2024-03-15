@@ -1,9 +1,11 @@
 import { UserModel } from 'src/app/models/user.model';
 import { ROL_ADMIN, ROL_DELIVER } from './roles.const';
+import { TOKEN_KEY } from './token.const';
 
 export const USERS: UserModel[] = [
   {
     id: 1,
+    token: TOKEN_KEY,
     name: 'Usuario de Prueba',
     lastName: 'de desarrollo',
     functionalities: ROL_ADMIN,
@@ -13,6 +15,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 1,
+    token: TOKEN_KEY,
     name: 'Juan Miguel',
     lastName: 'Piedrahaita',
     functionalities: ROL_ADMIN,
@@ -22,6 +25,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 2,
+    token: TOKEN_KEY,
     name: 'Juliana',
     lastName: 'Montoya Ramirez',
     functionalities: ROL_ADMIN,
@@ -31,6 +35,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 3,
+    token: TOKEN_KEY,
     name: 'Miriam',
     lastName: 'Aguilar',
     functionalities: ROL_ADMIN,
@@ -40,6 +45,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 4,
+    token: TOKEN_KEY,
     name: 'Maria Camila',
     lastName: 'Mina',
     functionalities: ROL_ADMIN,
@@ -49,6 +55,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 5,
+    token: TOKEN_KEY,
     name: 'Cristian Leandro',
     lastName: 'Aristizabal Giraldo',
     functionalities: ROL_DELIVER,
@@ -58,6 +65,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 6,
+    token: TOKEN_KEY,
     name: 'Contingencia',
     lastName: 'PLAN B',
     functionalities: ROL_DELIVER,
@@ -67,6 +75,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 1,
+    token: TOKEN_KEY,
     name: 'Valentina',
     lastName: 'Castro',
     functionalities: ROL_DELIVER,
@@ -76,6 +85,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 2,
+    token: TOKEN_KEY,
     name: 'Javier',
     lastName: 'Romero',
     functionalities: ROL_DELIVER,
@@ -85,6 +95,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 3,
+    token: TOKEN_KEY,
     name: 'Jaime',
     lastName: 'Olaya',
     functionalities: ROL_DELIVER,
@@ -94,6 +105,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 4,
+    token: TOKEN_KEY,
     name: 'Wilson',
     lastName: 'Galindo',
     functionalities: ROL_DELIVER,
@@ -103,6 +115,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 5,
+    token: TOKEN_KEY,
     name: 'Fredy',
     lastName: 'Hoyos',
     functionalities: ROL_DELIVER,
@@ -112,6 +125,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 6,
+    token: TOKEN_KEY,
     name: 'Yesenia',
     lastName: 'Alvarez',
     functionalities: ROL_DELIVER,
@@ -121,6 +135,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 7,
+    token: TOKEN_KEY,
     name: 'Lilian',
     lastName: 'Aguilar',
     functionalities: ROL_DELIVER,
@@ -130,6 +145,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 8,
+    token: TOKEN_KEY,
     name: 'Elizabeth',
     lastName: 'Flores',
     functionalities: ROL_DELIVER,
@@ -139,6 +155,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 9,
+    token: TOKEN_KEY,
     name: 'Andres',
     lastName: 'Navas',
     functionalities: ROL_DELIVER,
@@ -148,6 +165,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 10,
+    token: TOKEN_KEY,
     name: 'Ariana',
     lastName: 'Martinez',
     functionalities: ROL_DELIVER,
@@ -157,6 +175,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 11,
+    token: TOKEN_KEY,
     name: 'Camila',
     lastName: 'Oyola',
     functionalities: ROL_DELIVER,
@@ -166,6 +185,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 12,
+    token: TOKEN_KEY,
     name: 'Catherine',
     lastName: 'Gonzalez',
     functionalities: ROL_DELIVER,
@@ -175,6 +195,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 13,
+    token: TOKEN_KEY,
     name: 'Lucia',
     lastName: 'Catano',
     functionalities: ROL_DELIVER,
@@ -184,6 +205,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 14,
+    token: TOKEN_KEY,
     name: 'Lina',
     lastName: 'Suarez',
     functionalities: ROL_DELIVER,
@@ -193,6 +215,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 15,
+    token: TOKEN_KEY,
     name: 'Andrea',
     lastName: 'Gomez',
     functionalities: ROL_DELIVER,
@@ -202,6 +225,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 16,
+    token: TOKEN_KEY,
     name: 'Ivan',
     lastName: 'Morales',
     functionalities: ROL_DELIVER,
@@ -211,6 +235,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 17,
+    token: TOKEN_KEY,
     name: 'Bertha',
     lastName: 'Rendon',
     functionalities: ROL_DELIVER,
@@ -220,6 +245,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 18,
+    token: TOKEN_KEY,
     name: 'Josué',
     lastName: 'Fonseca',
     functionalities: ROL_DELIVER,
@@ -229,6 +255,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 19,
+    token: TOKEN_KEY,
     name: 'Julian',
     lastName: 'Soto',
     functionalities: ROL_DELIVER,
@@ -238,6 +265,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 20,
+    token: TOKEN_KEY,
     name: 'Sebastian',
     lastName: 'Pardo',
     functionalities: ROL_DELIVER,
@@ -247,6 +275,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 21,
+    token: TOKEN_KEY,
     name: 'Daniel',
     lastName: 'Serrano',
     functionalities: ROL_DELIVER,
@@ -256,6 +285,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 22,
+    token: TOKEN_KEY,
     name: 'Rodes',
     lastName: 'Briñez',
     functionalities: ROL_DELIVER,
@@ -265,6 +295,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 23,
+    token: TOKEN_KEY,
     name: 'Wilson',
     lastName: 'Cardenas',
     functionalities: ROL_DELIVER,
@@ -274,6 +305,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 24,
+    token: TOKEN_KEY,
     name: 'Jeffrey',
     lastName: 'Cardenas',
     functionalities: ROL_DELIVER,
@@ -283,6 +315,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 25,
+    token: TOKEN_KEY,
     name: 'Carolina',
     lastName: 'Rodriguez',
     functionalities: ROL_DELIVER,
@@ -292,6 +325,7 @@ export const USERS: UserModel[] = [
   },
   {
     id: 26,
+    token: TOKEN_KEY,
     name: 'Martin',
     lastName: 'Mortaro',
     functionalities: ROL_DELIVER,

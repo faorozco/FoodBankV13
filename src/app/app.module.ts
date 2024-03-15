@@ -26,7 +26,6 @@ import { CardButtonComponent } from './components/card-button/card-button.compon
 import { ListBeneficiaryComponent } from './pages/list-beneficiary/list-beneficiary.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './services/spinner/spinner.interceptor';
-import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -47,7 +46,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CardButtonComponent,
     ListBeneficiaryComponent,
     SpinnerComponent,
-    HomeAdminComponent,
     LoginComponent,
     
   ],

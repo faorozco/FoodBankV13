@@ -6,4 +6,5 @@ export interface UserModel {
   user: string;
   password: string;
   rol: string;
+  token: string;
 }

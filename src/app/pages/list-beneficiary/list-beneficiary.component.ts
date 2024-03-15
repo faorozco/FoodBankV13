@@ -39,7 +39,7 @@ export class ListBeneficiaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!localStorage.getItem('user')) {
+    if (!localStorage.getItem('user') && JSON.parse(localStorage.getItem('token')!) === '_¡3sT4m0s3guR0s0sD3L4v1d4s!#') {
       this.router.navigate(['./']);
     } else {
       if (this.user.rol === 'DEV' || this.user.rol === 'ADMIN') {

@@ -27,7 +27,7 @@ export class StatisticsComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    if (!localStorage.getItem('user')) {
+    if (!localStorage.getItem('user') && JSON.parse(localStorage.getItem('token')!) === '_¡3sT4m0s3guR0s0sD3L4v1d4s!#') {
       this.router.navigate(['./']);
     }
     this.dataDelivery = history.state.data;

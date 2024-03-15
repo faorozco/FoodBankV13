@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if(localStorage.getItem('user')) {
+    if(localStorage.getItem('user') && JSON.parse(localStorage.getItem('token')!) === '_¡3sT4m0s3guR0s0sD3L4v1d4s!#' ) {
       this.router.navigate(['/home']);
     }
     this.formLogin = new FormGroup({
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.validatedUser = this.filterUserandPassword(this.users, this.formLogin.value.username, this.formLogin.value.password)
     if (this.validatedUser.length > 0) {
       localStorage.setItem("name", JSON.stringify(this.validatedUser[0].name))
+      localStorage.setItem("token", JSON.stringify(this.validatedUser[0].token))
       localStorage.setItem("user", JSON.stringify(this.validatedUser[0]))
       localStorage.setItem("username", JSON.stringify(this.validatedUser[0].user))
       localStorage.setItem("rol", JSON.stringify(this.validatedUser[0].rol))
