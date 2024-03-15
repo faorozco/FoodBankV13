@@ -72,7 +72,7 @@ export class ListBeneficiaryComponent implements OnInit {
         this.temporalData = res.map((obj: BeneficiaryModel) => {
           return {
             ...obj,
-            lastEdition: obj.RegistrationDate.split(' ')[0],
+            lastEdition: obj.RegistrationDate.split(',')[0],
             index: res.indexOf(obj),
             nameUpperCase: obj.Name.toUpperCase(),
             LastUpperCase: obj.LastName.toUpperCase(),
@@ -94,7 +94,7 @@ export class ListBeneficiaryComponent implements OnInit {
           this.pageSize
         );
 
-        this.paginatorLength = this.dataTable.length;
+        this.paginatorLength = this.temporalData.length;
       },
       error: () => {
         alert('try again later, check your internet connection');

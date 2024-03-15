@@ -53,6 +53,7 @@ export class DeliveryComponent implements OnInit {
     if (newPageSize !== this.previousPageSize) {
       this.pageSize = newPageSize;
       this.previousPageSize = newPageSize;
+      console.log(event)
       this.updateDataTable();
     }
     this.pageIndex = event.pageIndex;
@@ -100,7 +101,7 @@ export class DeliveryComponent implements OnInit {
           this.temporalData.reverse(),
           this.pageSize
         );
-        this.paginatorLength = this.dataTable.length;
+        this.paginatorLength = this.temporalData.length;
         this.disableTable = true
       },
 
